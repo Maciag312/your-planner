@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-function DateBar() {
+export const DateBar = () => {
     return (
         <div>
-            
+            <h4>Date Bar</h4>
         </div>
     )
 }
 
-export default DateBar
-rfce
+const mapStateToProps = (state) => ({
+    
+})
+
+const mapDispatchToProps = {
+    
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DateBar)
