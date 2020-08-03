@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { NavigationBar } from './NavigationBar'
-import { DateBar } from './DateBar'
-import { ProgressBar } from './ProgressBar'
+import  NavigationBar  from './NavigationBar'
+import  DateBar  from './DateBar'
+import  ProgressBar  from './ProgressBar'
 
-export const Planner = () => {
+export const Planner = (props) => {
+   
+    
     return (
         <div>
+            
             <h1> This is planner</h1>
             <NavigationBar/>
             <DateBar/>
@@ -17,11 +20,10 @@ export const Planner = () => {
 }
 
 const mapStateToProps = (state) => ({
-    
+   
 })
 
 const mapDispatchToProps = {
-    
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Planner)

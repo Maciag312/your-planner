@@ -1,24 +1,33 @@
-const mainReducer = (state = [], action) => {
+const initialState = {
+  day: 0,
+  info: "21",
+}
+
+const mainReducer = (state = initialState, action) => {
     switch (action.type) {
-      case 'ADD_TODO':
-        return [
-          ...state,
-          {
-            id: action.id,
-            text: action.text,
-            completed: false
+  
+        case 'NEW_INFO':
+          return {
+            ...state,
+             info: action.info
           }
-        ]
-      case 'TOGGLE_TODO':
-        return state.map(todo =>
-          (todo.id === action.id)
-            ? {...todo, completed: !todo.completed}
-            : todo
-        )
+
+        case 'NEXT_DAY': 
+        return {
+              ...state,
+              day: state.day+1
+          }
+    
+        case 'PREVIOUS_DAY':
+            return {
+                ...state,
+                day: state.day-1
+            }
+
       default:
         return state
     }
   }
   
-  export default todos
+  export default mainReducer
   
