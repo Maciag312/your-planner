@@ -5,7 +5,8 @@ import Registration from './Account/Registration'
 import Login from './Account/Login'
 import TaskTimer from './TaskTimer/TaskTimer';
 import Planner from './Planner/Planner';
-
+import Home from './Home/Home';
+import Header from './Home/Header';
 function App() {
     return (
         <Router>
@@ -28,7 +29,8 @@ function App() {
               <Login/>
           </Route>
           <Route path="/" >
-            
+            <Header/>
+            <Home/>
           </Route>
         </Switch>
       </div>
