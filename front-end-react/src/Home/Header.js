@@ -9,30 +9,23 @@ function Header() {
   //Listener for effect in navBar
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    window.onscroll = () => {
+      // window.addEventListener("scroll", () => {
       if (window.scrollY > 100) {
         handleShow(true);
       } else handleShow(false);
-    });
-    return () => {
-      window.removeEventListener("scroll", window);
     };
   }, []);
-
-  const changeLogo = () =>{
-    if(show){
-      return {logo_white};
-    }
-    else 
-    return {logo_dark};
-  } 
-console.log(changeLogo);
 
   return (
     <nav className={`header ${show && "header__dark"}`}>
       {/* logo  -->left*/}
       <Link to="/">
-        <img className={"header__logo"} src={changeLogo} alt="" />
+        <img
+          className={"header__logo"}
+          src={show ? logo_white : logo_dark}
+          alt=""
+        />
       </Link>
 
       {/* Header blank box*/}

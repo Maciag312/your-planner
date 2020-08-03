@@ -1,6 +1,7 @@
 const initialState = {
   day: 0,
   info: "21",
+  authenticated: false,
 }
 
 const mainReducer = (state = initialState, action) => {
@@ -17,6 +18,11 @@ const mainReducer = (state = initialState, action) => {
                 ...state,
                 day: state.day-1
             }
+        case 'SET_AUTHENTICATION':
+          return {
+            ...state,
+            authenticated: action.authenticated
+          }
 
       default:
         return state
