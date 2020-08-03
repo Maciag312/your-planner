@@ -25,7 +25,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
     nextDay, previousDay
-
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DateBar)

@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import  NavigationBar  from './NavigationBar'
-import  DateBar  from './DateBar'
+import  SDAadsad  from './DateBar'
 import  ProgressBar  from './ProgressBar'
 
-export const Planner = (props) => {
+const Planner = (props) => {
    
     
     return (
@@ -12,7 +12,7 @@ export const Planner = (props) => {
             
             <h1> This is planner</h1>
             <NavigationBar/>
-            <DateBar/>
+            <SDAadsad/>
             <ProgressBar/>
             
         </div>

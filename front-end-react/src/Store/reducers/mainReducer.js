@@ -5,12 +5,6 @@ const initialState = {
 
 const mainReducer = (state = initialState, action) => {
     switch (action.type) {
-  
-        case 'NEW_INFO':
-          return {
-            ...state,
-             info: action.info
-          }
 
         case 'NEXT_DAY': 
         return {

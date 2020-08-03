@@ -1,0 +1,46 @@
+Redux functions 
+
+0. Dodaj zmienne w store potrzebne dla projektu 
+
+- dzien dla ktorego wyswietlamy projekt 
+- liste taskow 
+- liste kategorii (na podstawie taskow) 
+- credentials 
+- isAnyTaskRunning 
+
+1. W pliku Store/actions/index.js dodaj ponizsze funkcje, zaimplementuj ich logike w mainReducer, uzupelnij store o wymagane zmienne dla funkcji 
+
+[x] NextDay 
+[x] PreviousDay
+[] AddTask
+[] MarkTask
+[] PlayAndShowTask
+[] StopTask 
+[] ResumeTask 
+[] UpdateTaskTime
+[] RepeatTask
+[] CompleteAndDoNextTask
+[] RemoveTask 
+[] SaveCredentials (Login)
+[] ClearCredentials (Logout)
+
+2. Login 
+[] Dodaj inputy(material Ui) dla nicknamu i hasła , przycisk zaloguj, gdy po jego wcisnieciu credentials są wysłane do serwera, a po zalogowaniu przenosi do Plannera (redux SaveCredentials)
+
+3. Registration
+[] Dodaj inputy dla nicknamu, hasła i potwierdzenia hasla, przycisk zarejestruj, gdy po jego wcisnieciu dane są wysłane do serwera, i przenosi do Plannera bedac zalogowanym (redux SaveCredentials)
+
+4. Planner 
+[]
+
+4.1 NavigationBar
+
+4.1.1 
+
+4.2 DateBar
+
+4.3 ProgressBar 
+
+4.4 Lista Task 
+
+5. Task Timer 
