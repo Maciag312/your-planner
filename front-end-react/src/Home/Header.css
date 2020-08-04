@@ -20,7 +20,7 @@
   .header__logo {   
     position: fixed;
     left: 20px;
-    width: 200px;
+    max-width: 200px;
     object-fit: contain;
   }
   .header__navBox{

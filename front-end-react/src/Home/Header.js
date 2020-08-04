@@ -10,8 +10,8 @@ function Header() {
 
   useEffect(() => {
     window.onscroll = () => {
-      // window.addEventListener("scroll", () => {
-      if (window.scrollY > 100) {
+      
+      if (window.scrollY > 40) {
         handleShow(true);
       } else handleShow(false);
     };
