@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Home.css";
+
 export const Home = (props) => {
   return (
     <div className="home">

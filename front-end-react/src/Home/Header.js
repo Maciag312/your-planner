@@ -4,7 +4,7 @@ import logo_dark from "./pngs/logo_dark.png";
 import logo_white from "./pngs/logo_white.png";
 import { Link } from "react-router-dom";
 
-function Header() {
+export const Header = (props) => {
   const [show, handleShow] = useState(false);
   //Listener for effect in navBar
 
@@ -16,6 +16,8 @@ function Header() {
       } else handleShow(false);
     };
   }, []);
+
+  
 
   return (
     <nav className={`header ${show && "header__dark"}`}>
@@ -33,6 +35,7 @@ function Header() {
       {/* 1st Link Sign in  --> right*/}
 
       <div className="header__navBox">
+        
         <div className="header__nav">
           <Link
             className={`header__link ${show && "header__white__link"}`}
