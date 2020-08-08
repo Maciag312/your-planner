@@ -26,7 +26,7 @@ export default function TaskTimer() {
 
         <div className="timer__buttons">
 
-          <Fab className="timer__check__button" color="primary" >
+          <Fab  color="primary" >
             <CheckIcon />
           </Fab>
 
@@ -35,7 +35,7 @@ export default function TaskTimer() {
             <ArrowForwardIcon />
           </Fab>
 
-          <Fab className="timer__replay__button" color="primary">
+          <Fab  color="primary">
             <ReplayIcon />
           </Fab>
 

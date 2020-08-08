@@ -1,9 +1,3 @@
-.task__timer{
- 
-
-
-}
-
 .timer__back__button{
     align-self: flex-start;
     
@@ -64,16 +58,4 @@ padding-top: 4vw;
     
 }
 
-.timer__check__button{
- 
-}
 
-.timer__forward__button{
-
-
-}
-
-.timer__replay__button{
-
-
-}
