@@ -7,7 +7,10 @@ import TaskTimer from './TaskTimer/TaskTimer';
 import Planner from './Planner/Planner';
 import Home from './Home/Home';
 import Header from './Home/Header';
+
 function App() {
+
+
     return (
         <Router>
       <div className="app">

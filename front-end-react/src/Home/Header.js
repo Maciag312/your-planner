@@ -4,18 +4,20 @@ import logo_dark from "./pngs/logo_dark.png";
 import logo_white from "./pngs/logo_white.png";
 import { Link } from "react-router-dom";
 
-function Header() {
+export const Header = (props) => {
   const [show, handleShow] = useState(false);
   //Listener for effect in navBar
 
   useEffect(() => {
     window.onscroll = () => {
-      // window.addEventListener("scroll", () => {
-      if (window.scrollY > 100) {
+      
+      if (window.scrollY > 40) {
         handleShow(true);
       } else handleShow(false);
     };
   }, []);
+
+  
 
   return (
     <nav className={`header ${show && "header__dark"}`}>
@@ -33,6 +35,7 @@ function Header() {
       {/* 1st Link Sign in  --> right*/}
 
       <div className="header__navBox">
+        
         <div className="header__nav">
           <Link
             className={`header__link ${show && "header__white__link"}`}
