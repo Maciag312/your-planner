@@ -46,11 +46,11 @@ public class SwaggerConfig {
 
   private ApiInfo metadata() {
     return new ApiInfoBuilder()//
-        .title("JSON Web Token Authentication API")//
-        .description("This is a sample JWT authentication service. You can find out more about JWT at [https://jwt.io/](https://jwt.io/). For this sample, you can use the `admin` or `client` users (password: admin and client respectively) to test the authorization filters. Once you have successfully logged in and obtained the token, you should click on the right top button `Authorize` and introduce it with the prefix \"Bearer \".")//
+        .title("Your planner service ")//
+        .description("It's your planner backend support service. Having JWT by signing in or signing up authorize any request by adding Bearer token. Service allows to add, remove, modify task. Task can be run and stop or mark as done")//
         .version("1.0.0")//
         .license("MIT License").licenseUrl("http://opensource.org/licenses/MIT")//
-        .contact(new Contact(null, null, "mauriurraco@gmail.com"))//
+        .contact(new Contact(null, null, "bartekmaciag@icloud.com"))//
         .build();
   }
   

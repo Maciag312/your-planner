@@ -38,5 +38,14 @@ UserController:
   me: Returns current user's data
 
 TaskController:
-  addTask: Allows authenticated user to add task
+  addTask: Allows authenticated user to add task if duration is 0 it means that it's not timelimited
+  addTasks: Iteratively adds tasks
   getAllTasks: Returns tasks specified for principal
+  getAllTasksByDate: Returns tasks specified for principal limited by date
+  removeTask: Removes task by id
+  removeTasks: Iteratively removes task by id
+  modifyTask: Modify existing task but type is time limited or not is not possible to change
+  runTask: Runs task counting down duration until it's stop
+  stopTask: Calculates value of duration and set isRun to false, mark as done if duration is run out
+  calculateAndGetDuration: Calculates duration and stop task if its finished
+  toggleIsTaskDone: Sets task as done or not done

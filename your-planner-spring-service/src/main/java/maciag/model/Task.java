@@ -48,11 +48,11 @@ public class Task {
     @JoinColumn(name="user_id")
     private User user;
 
-    @Temporal(value = TemporalType.DATE)
+    @Temporal(value = TemporalType.TIMESTAMP)
     @NotNull
     private Date date;
 
-    @Temporal(value = TemporalType.DATE)
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date startDate;
 
     private boolean isTimeLimited = false;

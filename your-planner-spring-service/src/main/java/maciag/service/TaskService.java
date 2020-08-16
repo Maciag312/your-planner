@@ -47,12 +47,13 @@ public class TaskService {
 
     private boolean doesTaskExistsAndBelongsToUser(Long task_id, User fetchUser){
         Task task = taskRepository.findById(task_id).orElse(null);
-        if(task!=null)
+        if(task==null)
             return false;
         if(!task.getUser().getUsername().equals(fetchUser.getUsername()))
             return false;
         return true;
     }
+
     public void addTask(User user, TaskDTO taskDTO){
         Category category = categoryRepository.findByName(taskDTO.getCategory()).orElse(null);
         if(category==null)
@@ -68,7 +69,11 @@ public class TaskService {
             date = Calendar.getInstance().getTime();
             logger.warn("Parsing exception current time was assigned");
         }
-        Task task = new Task(taskDTO.getName(), category ,date, taskDTO.getDuration());
+        Task task;
+        if(taskDTO.getDuration()!=0)
+            task = new Task(taskDTO.getName(), category ,date, taskDTO.getDuration());
+        else
+            task = new Task(taskDTO.getName(), category ,date);
         task.setUser(user);
         taskRepository.save(task);
     }
@@ -93,14 +98,14 @@ public class TaskService {
     public List<TaskDTO> getAllTasksByDate(User user,Date date){
         List<TaskDTO> tasks = new ArrayList<>();
         List<Task> foundTasks =  taskRepository.findAllByUser(user);
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm");
-        return foundTasks.stream().filter(t->areDaysAndYearEqual(t.getDate(),date)).map(t->new TaskDTO(t.getId(), t.getName(),t.getCategory().getName(), t.getDate().getTime(), dateFormat.format(t.getDate()),t.isDone())).collect(Collectors.toList());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return foundTasks.stream().filter(t->areDaysAndYearEqual(t.getDate(),date)).map(t->new TaskDTO(t.getId(), t.getName(),t.getCategory().getName(), t.getDuration(), dateFormat.format(t.getDate()),t.isDone())).collect(Collectors.toList());
     }
     public List<TaskDTO> getAllTasks(User user){
         List<TaskDTO> tasks = new ArrayList<>();
         List<Task> foundTasks =  taskRepository.findAllByUser(user);
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm");
-        return foundTasks.stream().map(t->new TaskDTO(t.getId(), t.getName(),t.getCategory().getName(), t.getDate().getTime(), dateFormat.format(t.getDate()),t.isDone())).collect(Collectors.toList());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return foundTasks.stream().map(t->new TaskDTO(t.getId(), t.getName(),t.getCategory().getName(),t.getDuration(), dateFormat.format(t.getDate()),t.isDone())).collect(Collectors.toList());
     }
 
     public void modifyTask(TaskDTO taskDTO, User user){
@@ -114,7 +119,7 @@ public class TaskService {
         if(category==null)
             category = categoryRepository.save(new Category(taskDTO.getCategory()));
         task.setCategory(category);
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
         try {
             task.setDate(dateFormat.parse(taskDTO.getDate()));
@@ -148,34 +153,45 @@ public class TaskService {
     public void runTask(Long task_id,  User fetchUser){
         if(doesTaskExistsAndBelongsToUser(task_id, fetchUser)) {
             Task task = taskRepository.findById(task_id).get();
-            task.setStartDate(Calendar.getInstance().getTime());
-            task.setRun(true);
+            if(task.isTimeLimited()) {
+                task.setStartDate(Calendar.getInstance().getTime());
+                task.setRun(true);
+                taskRepository.save(task);
+            }
         }
     }
 
     public void stopTask(Long task_id,  User fetchUser){
         if(doesTaskExistsAndBelongsToUser(task_id, fetchUser)) {
             Task task = taskRepository.findById(task_id).get();
-            long timePast = Calendar.getInstance().getTimeInMillis() - task.getStartDate().getTime();
-            if (timePast > task.getDuration())
-                task.setDuration(Long.valueOf(0));
-            else
-                task.setDuration(task.getDuration() - timePast);
-            task.setStartDate(null);
-            task.setRun(false);
+            if(task.getStartDate()!=null) {
+                long timePast = Calendar.getInstance().getTimeInMillis() - task.getStartDate().getTime();
+                if (timePast > task.getDuration()) {
+                    task.setDuration(Long.valueOf(0));
+                    task.setDone(true);
+                }
+                else
+                    task.setDuration(task.getDuration() - timePast);
+                task.setStartDate(null);
+                task.setRun(false);
+                taskRepository.save(task);
+            }
         }
     }
 
     public long calculateAndGetDuration(Long task_id, User fetchUser) {
         if (doesTaskExistsAndBelongsToUser(task_id, fetchUser)) {
             Task task = taskRepository.findById(task_id).get();
-            long timePast = Calendar.getInstance().getTimeInMillis() - task.getStartDate().getTime();
-            if (timePast > task.getDuration()) {
-                task.setDuration(Long.valueOf(0));
-                task.setRun(false);
+            if(task.getStartDate()!=null) {
+                long timePast = Calendar.getInstance().getTimeInMillis() - task.getStartDate().getTime();
+                if (timePast > task.getDuration()) {
+                    task.setDuration(Long.valueOf(0));
+                    task.setDone(true);
+                    task.setRun(false);
+                } else
+                    task.setDuration(task.getDuration() - timePast);
+                taskRepository.save(task);
             }
-            else
-                task.setDuration(task.getDuration()-timePast);
             return task.getDuration();
         }
         return 0;

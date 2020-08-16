@@ -74,12 +74,12 @@ public class TaskController {
         return taskService.getAllTasks(fetchUser(authentication));
     }
 
-    @GetMapping(value = "/getAllTasksByDate")
+    @GetMapping(value = "/getAllTasksByDate/{date}")
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_CLIENT')")
     @ApiOperation(value = "${TaskController.getAllTasksByDate}")
     @ApiResponses(value = {@ApiResponse(code = 400, message = "Something went wrong"),   @ApiResponse(code = 403, message = "Access denied"),  @ApiResponse(code = 404, message = "The user doesn't exist"), @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
     public List<TaskDTO> getAllTasksByDate(@PathVariable String date, @ApiIgnore Authentication authentication) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             return taskService.getAllTasksByDate(fetchUser(authentication), dateFormat.parse(date));
         }catch(ParseException p){
@@ -91,7 +91,7 @@ public class TaskController {
 
     @PostMapping(value = "/modifyTask", consumes = "application/json")
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_CLIENT')")
-    @ApiOperation(value = "${TaskController.modifyTas}")
+    @ApiOperation(value = "${TaskController.modifyTask}")
     @ApiResponses(value = {@ApiResponse(code = 400, message = "Something went wrong"),   @ApiResponse(code = 403, message = "Access denied"),  @ApiResponse(code = 404, message = "The user doesn't exist"), @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
     public void modifyTask(@RequestBody TaskDTO taskDTO, @ApiIgnore Authentication authentication) {
         taskService.modifyTask(taskDTO, fetchUser(authentication));
@@ -142,7 +142,7 @@ public class TaskController {
 
     @GetMapping("/calculateAndGetDuration/{task_id}")
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_CLIENT')")
-    @ApiOperation(value = "${TaskController.stopTask}")
+    @ApiOperation(value = "${TaskController.calculateAndGetDuration}")
     @ApiResponses(value = {@ApiResponse(code = 400, message = "Something went wrong"),   @ApiResponse(code = 403, message = "Access denied"),  @ApiResponse(code = 404, message = "The user doesn't exist"), @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
     public void calculateAndGetDuration(@PathVariable Long task_id, @ApiIgnore Authentication authentication) {
         taskService.calculateAndGetDuration(task_id, fetchUser(authentication));
