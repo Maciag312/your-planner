@@ -7,7 +7,11 @@ import Fab from '@material-ui/core/Fab';
 import { IconButton } from "@material-ui/core";
 import "./TaskTimer.css";
 
-export default function TaskTimer() {
+export default function TaskTimer(props) {
+
+  
+
+
   return (
     
         
@@ -16,17 +20,17 @@ export default function TaskTimer() {
           <ArrowBackIosIcon className="timer__back__icon" />
         </IconButton>
 
-        <div className="timer__task"> Task: Fizyka</div>
+        <div className="timer__task"> Task: {props.taskName}</div>
 
         <div className="timer__time__left">time left:</div>
 
-        <div className="timer__count__down"> 01:12:34</div>
+        <div className="timer__count__down"> {props.timeLeft}</div>
 
         <div className="timer__next__task"> Following task: Matematyka </div>
 
         <div className="timer__buttons">
 
-          <Fab  color="primary" >
+          <Fab color="primary" >
             <CheckIcon />
           </Fab>
 

@@ -36,6 +36,8 @@
     ]
   },
   "devDependencies": {
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "miragejs": "^0.1.40",
     "react-router-dom": "^5.2.0"
   }
 }

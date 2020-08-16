@@ -1,8 +1,22 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import { connect } from 'react-redux'
-import {nextDay, previousDay} from './../Store/actions/index'
+import {nextDay, previousDay, setDay} from './../Store/actions/index'
 
 export const DateBar = (props) => {
+
+
+    useEffect(() => {
+        const d = new Date()
+        const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d)
+        const mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d)
+        const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d)
+
+        props.setDay(`${da}-${mo}-${ye}`)
+
+        return () => {
+            
+        }
+    }, [])
     const goNextDay=()=>{
         props.nextDay()
     }
@@ -24,7 +38,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-    nextDay, previousDay
+    nextDay, previousDay, setDay
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DateBar)
