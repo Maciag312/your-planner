@@ -7,6 +7,7 @@ function Task(t) {
         <div>
             {t.isDone.toString()}
             {t.name}
+            {t.isTimeLimited}
             {t.duration===0?(play===true?<Redirect to="/timer"></Redirect>:<div></div>):<div></div>}
         </div>
     )

@@ -1,0 +1,15 @@
+.outside {
+    width: 260px;
+    height: 6px;
+    border-radius: 10px;
+    background-color: #F3F5FF;
+    margin: 0 auto 0 auto;
+  }
+  
+  .inside{
+   width: 100px;
+   height: 6px;
+   background-color: #2B4CF8;
+   border-radius: 10px;
+   border: 0px;
+  }
