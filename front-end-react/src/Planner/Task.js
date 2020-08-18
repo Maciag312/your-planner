@@ -1,12 +1,20 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
+import './Task.css';
 
 function Task({ task }) {
   const [play, setPlay] = React.useState(false);
   return (
-    <div>
-      {task.isDone.toString()}
-      
+    <div className="item">
+      <div className="task-content content">
+        <div class="task-checkbox ui checkbox">
+          <input type="checkbox" />
+          <label></label>
+        </div>
+        {task.name}
+      </div>
+      {/* {task.isDone.toString()}
+
       {task.name}
 
       {task.isTimeLimited.toString()}
@@ -19,7 +27,7 @@ function Task({ task }) {
         )
       ) : (
         <div></div>
-      )}
+      )} */}
     </div>
   );
 }

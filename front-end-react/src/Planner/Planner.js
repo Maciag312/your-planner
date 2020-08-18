@@ -4,6 +4,7 @@ import NavigationBar from "./NavigationBar";
 import DateBar from "./DateBar";
 import ProgressBar from "./ProgressBar";
 import TasksList from "./TasksList";
+import "./Planner.css";
 
 const Planner = (props) => {
   return (
@@ -11,11 +12,17 @@ const Planner = (props) => {
       <h1> This is planner</h1>
       <NavigationBar />
       <DateBar />
-      <ProgressBar
-        numberOfDone={props.tasks.filter((t) => t.isDone === true).length}
-        numberOfTasks={props.tasks.length}
-      />
-      <TasksList tasks={props.tasks} />
+      <br/>
+      <div className="planner-box">
+        <div className="planner-segment ui segment">
+          <ProgressBar
+            numberOfDone={props.tasks.filter((t) => t.isDone === true).length}
+            numberOfTasks={props.tasks.length}
+          />
+          <TasksList tasks={props.tasks} />
+        </div>
+      </div>
+
       <div>{props.authenticated.toString()}</div>
       <div>{props.jwt.toString()}</div>
     </div>

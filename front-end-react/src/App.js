@@ -8,7 +8,7 @@ import Planner from './Planner/Planner';
 import Home from './Home/Home';
 import Header from './Home/Header';
 
-function App() {
+const App = () => {
 
 
     return (
