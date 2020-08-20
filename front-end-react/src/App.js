@@ -9,7 +9,7 @@ import Home from './Home/Home';
 import Header from './Home/Header';
 import Statistics from './Statistics/Statistics'
 
-function App() {
+const App = () => {
 
 
     return (

@@ -1,14 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import "./Home.css";
 
 export const Home = (props) => {
   return (
     <div className="home">
-      <span className="home__text">What is your todays goal ? </span>
-      <input className="home__input" />
-      <button className="home__button">Begin adding your tasks</button>
-      <div>{props.authenticated.toString()}</div>
+      <div className="home-box container">
+        <h1 className="home__text">What is your todays goal ? </h1>
+        <input className="home__input" />
+        <br/>
+        <button className="home-button ui blue button">Begin adding your tasks</button>
+         <div>{props.authenticated.toString()}</div>
+      </div>
     </div>
   );
 };

@@ -1,1 +1,11 @@
-/* dsadsa */
+.planner-box{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.planner-segment{
+    width: 50%;
+}
