@@ -10,7 +10,6 @@ import "./Planner.css";
 const Planner = (props) => {
   return (
     <div>
-      <h1> This is planner</h1>
       <NavigationBar />
       <DateBar />
       <br />

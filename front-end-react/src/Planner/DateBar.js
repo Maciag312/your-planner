@@ -1,7 +1,9 @@
 import React, { Component, useEffect } from 'react'
 import { connect } from 'react-redux'
 import {nextDay, previousDay, setDay} from './../Store/actions/index'
-
+import leftarrow from "../Home/pngs/leftarrow.png"
+import rightarrow from "../Home/pngs/rightarrow.png"
+import './DateBar.css'
 export const DateBar = (props) => {
 
 
@@ -24,12 +26,15 @@ export const DateBar = (props) => {
         props.previousDay();
     }
     return (
-        <div>
-            <h4>Date Bar</h4>
-            <button onClick={goPreviousDay} alt="">previous</button>
-            {props.day}
-            <button onClick={goNextDay} alt="">next</button>
-        </div>
+        <div style={{ justifyContent: "center", display: "flex" }}>
+            <div className="date-wrapper">
+                <button className="date-button" onClick={goPreviousDay} alt=""><img alt=""  src={leftarrow}></img></button>
+                <div className="date-text">
+                {props.day}
+                </div>
+                <button className="date-button" onClick={goNextDay} alt=""><img alt="" src={rightarrow}></img></button>
+            </div>
+        </div> 
     )
 }
 

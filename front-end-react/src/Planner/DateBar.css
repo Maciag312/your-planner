@@ -1,0 +1,23 @@
+.date-button{
+    border: none;
+    background: none;
+    cursor: pointer;
+    align-self: flex-start;
+    height: 50px;
+    width: 40px;
+}
+.date-button > img{
+    width: auto;
+    height: 30px;
+}
+.date-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    width: 400px;
+    margin-top: 10px;
+}
+.date-text{
+    font-size: 24px;
+    margin-top: 10px;
+}
