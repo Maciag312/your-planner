@@ -7,6 +7,7 @@ import TaskTimer from './TaskTimer/TaskTimer';
 import Planner from './Planner/Planner';
 import Home from './Home/Home';
 import Header from './Home/Header';
+import Statistics from './Statistics/Statistics'
 
 function App() {
 
@@ -19,9 +20,6 @@ function App() {
           <Route path="/planner">
               <Planner/>
           </Route>
-          <Route path="/statistics">
-            <h1> Statistics</h1>
-          </Route>
           <Route path="/registration">
             <Registration/>
           </Route>
@@ -30,6 +28,9 @@ function App() {
           </Route>
           <Route path="/login">
               <Login/>
+          </Route>
+          <Route path="/statistics">
+              <Statistics/>
           </Route>
           <Route path="/" >
             <Header/>

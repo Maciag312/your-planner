@@ -2,7 +2,7 @@ const initialState = {
   day: 0,
   info: "21",
   authenticated: false,
-  tasks: [{duration: 123, date: 312, isDone: true, name: "first task", category: ""},{duration: 123, date: 123, isDone: false, name: "second task", category: ""},{duration: 123, date: 312, isDone: false, name: "third task", category: ""}],
+  tasks: [{duration: 123, date: 312, isDone: true, name: "first task", category: "",isTimeLimited: false},{duration: 123, date: 123, isDone: false, name: "second task", category: "",isTimeLimited: false},{duration: 123, date: 312, isDone: false, name: "third task", category: "",isTimeLimited: false}],
   jwt: ""
 }
 

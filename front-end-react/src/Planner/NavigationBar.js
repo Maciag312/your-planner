@@ -2,13 +2,24 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import "./NavigationBar.css"
 import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
-export const NavigationBar = () => {
+
+
+export const NavigationBar = (props) => {
+    let location = useLocation();
+      
+
+    const logout = () =>{
+    }
     return (
         <div className="menu">
-            <Link>TASKS </Link>
-            <Link>STATISTICS</Link>
-            <Link>LOG OUT</Link>
+            <div className="menuinner">
+               
+                <Link className="link-item" style={location.pathname==="/planner"? {fontWeight: "bolder"}:{fontWeight: "normal"}} disabled={location==="/planner"} to="/planner">TASKS</Link>
+                <Link className="link-item"  style={location.pathname==="/statistics"? {fontWeight: "bolder"}:{fontWeight: "normal"}}  disabled={location.pathname==="/statistics"} to="/statistics">STATISTICS</Link>
+                <button className="link-item"  onClick={logout}>LOG OUT</button>
+            </div>
         </div>
     )
 }
