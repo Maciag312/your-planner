@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import NavigationBar from "./NavigationBar";
 import DateBar from "./DateBar";
@@ -12,13 +12,13 @@ const Planner = (props) => {
       <h1> This is planner</h1>
       <NavigationBar />
       <DateBar />
-      <br/>
+      <br />
       <div className="planner-box">
+        <ProgressBar
+          numberOfDone={props.tasks.filter((t) => t.isDone === true).length}
+          numberOfTasks={props.tasks.length}
+        />
         <div className="planner-segment ui segment">
-          <ProgressBar
-            numberOfDone={props.tasks.filter((t) => t.isDone === true).length}
-            numberOfTasks={props.tasks.length}
-          />
           <TasksList tasks={props.tasks} />
         </div>
       </div>

@@ -3,7 +3,6 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import CheckIcon from "@material-ui/icons/Check";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ReplayIcon from "@material-ui/icons/Replay";
-import Fab from "@material-ui/core/Fab";
 import { IconButton } from "@material-ui/core";
 import "./TaskTimer.css";
 
@@ -23,17 +22,17 @@ export default function TaskTimer(props) {
       <div className="timer__next__task"> Following task: Matematyka </div>
 
       <div className="timer__buttons">
-        <Fab color="primary">
+        <button className="timer-green-button  ui green button">
           <CheckIcon />
-        </Fab>
+        </button>
 
-        <Fab color="secondary">
+        <button className="timer-blue-button ui orange button">
           <ArrowForwardIcon />
-        </Fab>
+        </button>
 
-        <Fab color="primary">
+        <button className="timer-yellow-button ui yellow button">
           <ReplayIcon />
-        </Fab>
+        </button>
       </div>
     </div>
   );
