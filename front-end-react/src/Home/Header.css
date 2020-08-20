@@ -33,6 +33,7 @@
   flex-direction: column;
 }
 .header__link {
+  align-items: stretch;
   color: #84a6fe;
   text-decoration: none;
 }
