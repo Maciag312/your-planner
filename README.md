@@ -658,7 +658,7 @@ apiKey Authorization Bearer {jwt}
 ```
 Type Name Scopes
 apiKey Authorization Bearer {jwt}
-``````
+```
 ### Returns specific user by username
 
 ```
