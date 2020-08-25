@@ -541,7 +541,7 @@ apiKey Authorization Bearer {jwt}
 ```
 Type Name Scopes
 apiKey Authorization Bearer {jwt}
-``````
+```
 ### Returns current user’s data
 
 ```
