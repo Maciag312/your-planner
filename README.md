@@ -1,5 +1,3 @@
-
-
 ## Overview
 
 It’s your planner backend support service. Having JWT by signing in or signing up authorize anyrequest by adding Bearer token. Service allows to add, remove, modify task. Task can be run and
@@ -350,7 +348,11 @@ apiKey Authorization Bearer {jwt}
 ```
 Type Name Scopes
 apiKey Authorization Bearer {jwt}
-``````
+```
+```
+Type Name Scopes
+apiKey Authorization Bearer {jwt}
+```
 ### Removes task by id
 
 ```
@@ -388,7 +390,11 @@ apiKey Authorization Bearer {jwt}
 ```
 Type Name Scopes
 apiKey Authorization Bearer {jwt}
-``````
+```
+```
+Type Name Scopes
+apiKey Authorization Bearer {jwt}
+```
 ### Iteratively removes task by id
 
 ```
@@ -463,7 +469,11 @@ apiKey Authorization Bearer {jwt}
 ```
 Type Name Scopes
 apiKey Authorization Bearer {jwt}
-``````
+```
+```
+Type Name Scopes
+apiKey Authorization Bearer {jwt}
+```
 ### Calculates value of duration and set isRun to false,
 
 ### mark as done if duration is run out
@@ -503,7 +513,11 @@ apiKey Authorization Bearer {jwt}
 ```
 Type Name Scopes
 apiKey Authorization Bearer {jwt}
-``````
+```
+```
+Type Name Scopes
+apiKey Authorization Bearer {jwt}
+```
 ### ${TaskController.toggleIsDone}
 
 ```
