@@ -11,7 +11,6 @@ Front-end was written in react and redux. Backend service is written in Spring u
 [![](https://github.com/Maciag312/your-planner/raw/master/sshots/ypss1.png)](https://github.com/Maciag312/your-planner/raw/master/sshots/ypss1.png)
 
 [![](https://github.com/Maciag312/your-planner/raw/master/sshots/ypss2.png)](https://github.com/Maciag312/your-planner/raw/master/sshots/ypss2.png)
-# Your planner service
 
 
 ## Version information
@@ -40,6 +39,7 @@ _HostBasePath_ : localhost:8080 : /
 ## Security
 
 ## Authorization
+
 In order to be authorizeited and authenticated first user has to register yourself or log in then use JWT that is returned and put it in every request using header Authorization Bearer {Token}
 
 _TypeName_ : apiKey : Authorization Bearer {jwt}
@@ -57,7 +57,9 @@ _In_ : HEADER
 HTTPCode Description Schema
 200 OK string
 ```
- 
+#### Produces
+
+##### • */*
 
 #### Tags
 
@@ -67,15 +69,11 @@ HTTPCode Description Schema
 
 ```
 Type Name Scopes
-apiKey Authorization Bearer {jwt}
-
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
+apiKey Authorization global
 ```
 ### Allows authenticated user to add task if duration is 0
 
-### it means that it’s not time limited
+### it means that it’s not timelimited
 
 ```
 POST /tasks/addTask
@@ -101,7 +99,9 @@ HTTPCode Description Schema
 
 - application/json
 
- 
+#### Produces
+
+##### • */*
 
 #### Tags
 
@@ -111,11 +111,7 @@ HTTPCode Description Schema
 
 ```
 Type Name Scopes
-apiKey Authorization Bearer {jwt}
-
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
+apiKey Authorization global
 ```
 ### Allows authenticated user to add task if duration is 0
 
@@ -141,7 +137,9 @@ HTTPCode Description Schema
 404 The user doesn’t exist No Content
 500 Expired or invalid JWT token No Content
 ```
- 
+#### Produces
+
+##### • */*
 
 #### Tags
 
@@ -151,11 +149,7 @@ HTTPCode Description Schema
 
 ```
 Type Name Scopes
-apiKey Authorization Bearer {jwt}
-
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
+apiKey Authorization global
 ```
 ### Calculates duration and stop task if its finished
 
@@ -179,7 +173,9 @@ HTTPCode Description Schema
 404 The user doesn’t exist No Content
 500 Expired or invalid JWT token No Content
 ```
- 
+#### Produces
+
+##### • */*
 
 #### Tags
 
@@ -189,11 +185,7 @@ HTTPCode Description Schema
 
 ```
 Type Name Scopes
-apiKey Authorization Bearer {jwt}
-
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
+apiKey Authorization global
 ```
 ### Returns tasks specified for principal
 
@@ -214,7 +206,9 @@ HTTPCode Description Schema
 HTTPCode Description Schema
 500 Expired or invalid JWT token No Content
 ```
- 
+#### Produces
+
+##### • */*
 
 #### Tags
 
@@ -224,11 +218,7 @@ HTTPCode Description Schema
 
 ```
 Type Name Scopes
-apiKey Authorization Bearer {jwt}
-
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
+apiKey Authorization global
 ```
 ### Returns tasks specified for principal limited by date
 
@@ -252,7 +242,9 @@ HTTPCode Description Schema
 500 Expired or invalid JWT token No Content
 ```
 
- 
+#### Produces
+
+##### • */*
 
 #### Tags
 
@@ -262,11 +254,7 @@ HTTPCode Description Schema
 
 ```
 Type Name Scopes
-apiKey Authorization Bearer {jwt}
-
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
+apiKey Authorization global
 ```
 ### ${TaskController.isTaskRunning}
 
@@ -289,7 +277,9 @@ HTTPCode Description Schema
 404 The user doesn’t exist No Content
 500 Expired or invalid JWT token No Content
 ```
- 
+#### Produces
+
+##### • */*
 
 
 #### Tags
@@ -300,11 +290,7 @@ HTTPCode Description Schema
 
 ```
 Type Name Scopes
-apiKey Authorization Bearer {jwt}
-
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
+apiKey Authorization global
 ```
 ### Modify existing task but type is time limited or not is
 
@@ -333,7 +319,9 @@ HTTPCode Description Schema
 
 - application/json
 
- 
+#### Produces
+
+##### • */*
 
 
 #### Tags
@@ -344,15 +332,7 @@ HTTPCode Description Schema
 
 ```
 Type Name Scopes
-apiKey Authorization Bearer {jwt}
-
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
-```
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
+apiKey Authorization global
 ```
 ### Removes task by id
 
@@ -375,7 +355,9 @@ HTTPCode Description Schema
 404 The user doesn’t exist No Content
 500 Expired or invalid JWT token No Content
 ```
- 
+#### Produces
+
+##### • */*
 
 #### Tags
 
@@ -386,15 +368,7 @@ HTTPCode Description Schema
 
 ```
 Type Name Scopes
-apiKey Authorization Bearer {jwt}
-
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
-```
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
+apiKey Authorization global
 ```
 ### Iteratively removes task by id
 
@@ -417,7 +391,9 @@ HTTPCode Description Schema
 404 The user doesn’t exist No Content
 500 Expired or invalid JWT token No Content
 ```
- 
+#### Produces
+
+##### • */*
 
 #### Tags
 
@@ -427,11 +403,7 @@ HTTPCode Description Schema
 
 ```
 Type Name Scopes
-apiKey Authorization Bearer {jwt}
-
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
+apiKey Authorization global
 ```
 
 ### Runs task counting down duration until it’s stop
@@ -455,7 +427,9 @@ HTTPCode Description Schema
 404 The user doesn’t exist No Content
 500 Expired or invalid JWT token No Content
 ```
- 
+#### Produces
+
+##### • */*
 
 #### Tags
 
@@ -465,15 +439,7 @@ HTTPCode Description Schema
 
 ```
 Type Name Scopes
-apiKey Authorization Bearer {jwt}
-
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
-```
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
+apiKey Authorization global
 ```
 ### Calculates value of duration and set isRun to false,
 
@@ -499,7 +465,9 @@ HTTPCode Description Schema
 404 The user doesn’t exist No Content
 500 Expired or invalid JWT token No Content
 ```
- 
+#### Produces
+
+##### • */*
 
 #### Tags
 
@@ -509,15 +477,7 @@ HTTPCode Description Schema
 
 ```
 Type Name Scopes
-apiKey Authorization Bearer {jwt}
-
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
-```
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
+apiKey Authorization global
 ```
 ### ${TaskController.toggleIsDone}
 
@@ -541,7 +501,9 @@ HTTPCode Description Schema
 404 The user doesn’t exist No Content
 500 Expired or invalid JWT token No Content
 ```
- 
+#### Produces
+
+##### • */*
 
 #### Tags
 
@@ -551,11 +513,7 @@ HTTPCode Description Schema
 
 ```
 Type Name Scopes
-apiKey Authorization Bearer {jwt}
-
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
+apiKey Authorization global
 ```
 ### Returns current user’s data
 
@@ -572,7 +530,9 @@ HTTPCode Description Schema
 403 Access denied No Content
 500 Expired or invalid JWT token No Content
 ```
- 
+#### Produces
+
+##### • */*
 
 #### Tags
 
@@ -582,12 +542,8 @@ HTTPCode Description Schema
 
 ```
 Type Name Scopes
-apiKey Authorization Bearer {jwt}
-
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
-```Unknown apiKey
+apiKey Authorization global
+Unknown apiKey
 ```
 ### Authenticates user and returns its JWT token.
 
@@ -614,7 +570,9 @@ HTTPCode Description Schema
 
 - application/json
 
- 
+#### Produces
+
+##### • */*
 
 #### Tags
 
@@ -624,11 +582,7 @@ HTTPCode Description Schema
 
 ```
 Type Name Scopes
-apiKey Authorization Bearer {jwt}
-
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
+apiKey Authorization global
 ```
 ### Creates user and returns its JWT token
 
@@ -658,7 +612,9 @@ HTTPCode Description Schema
 
 - application/json
 
- 
+#### Produces
+
+##### • */*
 
 #### Tags
 
@@ -668,11 +624,7 @@ HTTPCode Description Schema
 
 ```
 Type Name Scopes
-apiKey Authorization Bearer {jwt}
-
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
+apiKey Authorization global
 ```
 ### Returns specific user by username
 
@@ -699,7 +651,9 @@ HTTPCode Description Schema
 404 The user doesn’t exist No Content
 500 Expired or invalid JWT token No Content
 ```
- 
+#### Produces
+
+##### • */*
 
 #### Tags
 
@@ -709,12 +663,8 @@ HTTPCode Description Schema
 
 ```
 Type Name Scopes
-apiKey Authorization Bearer {jwt}
-
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
-```Unknown apiKey
+apiKey Authorization global
+Unknown apiKey
 ```
 ### Deletes specific user by username
 
@@ -741,7 +691,9 @@ HTTPCode Description Schema
 404 The user doesn’t exist No Content
 500 Expired or invalid JWT token No Content
 ```
- 
+#### Produces
+
+##### • */*
 
 #### Tags
 
@@ -751,12 +703,8 @@ HTTPCode Description Schema
 
 ```
 Type Name Scopes
-apiKey Authorization Bearer {jwt}
-
-```
-Type Name Scopes
-apiKey Authorization Bearer {jwt}
-```Unknown apiKey
+apiKey Authorization global
+Unknown apiKey
 ```
 ## Definitions
 
@@ -793,5 +741,3 @@ id optional integer (int32)
 roles optional < enum (ROLE_ADMIN, ROLE_CLIENT) > array
 username optional string
 ```
-
-
