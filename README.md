@@ -3,6 +3,10 @@
 It’s your planner backend support service. Having JWT by signing in or signing up authorize anyrequest by adding Bearer token. Service allows to add, remove, modify task. Task can be run and
 stop or mark as done
 
+Your planner is app that helps you to set your daily tasks and goals. You can track your time and mark if task is done. 
+Front-end was written in react and redux. Backend service is written in spring below you can read API documentation. 
+
+
 
 # Your planner service
 [![](https://github.com/Maciag312/your-planner/raw/master/sshots/ypss0.png)](https://github.com/Maciag312/your-planner/raw/master/sshots/ypss0.png)
