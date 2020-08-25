@@ -73,7 +73,7 @@ apiKey Authorization Bearer {jwt}
 ```
 Type Name Scopes
 apiKey Authorization Bearer {jwt}
-``````
+```
 ### Allows authenticated user to add task if duration is 0
 
 ### it means that it’s not time limited
@@ -117,7 +117,7 @@ apiKey Authorization Bearer {jwt}
 ```
 Type Name Scopes
 apiKey Authorization Bearer {jwt}
-``````
+```
 ### Allows authenticated user to add task if duration is 0
 
 ### it means that it’s not timelimited
@@ -157,7 +157,7 @@ apiKey Authorization Bearer {jwt}
 ```
 Type Name Scopes
 apiKey Authorization Bearer {jwt}
-``````
+```
 ### Calculates duration and stop task if its finished
 
 ```
@@ -195,7 +195,7 @@ apiKey Authorization Bearer {jwt}
 ```
 Type Name Scopes
 apiKey Authorization Bearer {jwt}
-``````
+```
 ### Returns tasks specified for principal
 
 ```
@@ -230,7 +230,7 @@ apiKey Authorization Bearer {jwt}
 ```
 Type Name Scopes
 apiKey Authorization Bearer {jwt}
-``````
+```
 ### Returns tasks specified for principal limited by date
 
 ```
@@ -268,7 +268,7 @@ apiKey Authorization Bearer {jwt}
 ```
 Type Name Scopes
 apiKey Authorization Bearer {jwt}
-``````
+```
 ### ${TaskController.isTaskRunning}
 
 ```
@@ -306,7 +306,7 @@ apiKey Authorization Bearer {jwt}
 ```
 Type Name Scopes
 apiKey Authorization Bearer {jwt}
-``````
+```
 ### Modify existing task but type is time limited or not is
 
 ### not possible to change
@@ -425,7 +425,7 @@ apiKey Authorization Bearer {jwt}
 ```
 Type Name Scopes
 apiKey Authorization Bearer {jwt}
-``````
+```
 
 ### Runs task counting down duration until it’s stop
 
@@ -614,7 +614,7 @@ apiKey Authorization Bearer {jwt}
 ```
 Type Name Scopes
 apiKey Authorization Bearer {jwt}
-``````
+```
 ### Creates user and returns its JWT token
 
 ```
