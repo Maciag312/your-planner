@@ -1,11 +1,76 @@
-.planner-box{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: center;
+
+.planner-list {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
 }
 
+.planner-segment {
+  width: 50%;
+}
 
-.planner-segment{
-    width: 50%;
+.category-input-box {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.category-input-box > div {
+  margin: 10px;
+}
+
+.category-and-addNew {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.category-and-addNew >div{
+margin: 6px;
+}
+
+.newTask-and-submit {
+
+  display: flex;
+  justify-content: space-evenly;
+  width: 50%;
+}
+
+.input-form {
+  width: 100%;
+}
+
+@media screen and (max-width: 1044px) {
+  .category-input-box {
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+  .category-input-box > div {
+    margin: 10px;
+  }
+
+  .category-and-addNew {
+    align-self: center;
+    width: 80%;
+  }
+  .newTask-and-submit {
+    align-self: center;
+    justify-content: space-between;
+    width: 90%;
+  }
+  .planner-segment {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 496px){
+    .category-and-addNew{
+        flex-direction: column;
+    }
+    .category-and-addNew >div{
+        margin: 10px;
+    } 
+    .planner-segment {
+        width: 90%;
+      }
 }

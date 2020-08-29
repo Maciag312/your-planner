@@ -2,7 +2,13 @@ const initialState = {
   day: 0,
   info: "21",
   authenticated: false,
-
+  categories: [
+    { label: "Sport", value: "sport" },
+    { label: "Education", value: "education" },
+    { label: "Culture", value: "culture" },
+    { label: "Leasure Time", value: "leasure" },
+    { label: "Health", value: "health" },
+  ],
   tasks: [
     {
       duration: 123,
