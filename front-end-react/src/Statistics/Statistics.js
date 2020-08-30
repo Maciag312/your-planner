@@ -6,7 +6,7 @@ function Statistics() {
     return (
         <div>
             <NavigationBar></NavigationBar>
-           <h1> Hello its your statistics </h1>
+           <h1> Hello its your statisticss </h1>
         </div>
     )
 }
