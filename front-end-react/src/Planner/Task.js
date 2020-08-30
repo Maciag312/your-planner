@@ -59,7 +59,7 @@ function Task({ task }) {
   };
 
   return (
-    <div className="list-item item">
+    <div className="item">
       <div className="left floated content">
         <div className="task box">
           {task.isTimeLimited ? playPause() : checkbox()}
