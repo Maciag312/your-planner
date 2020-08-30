@@ -20,8 +20,9 @@ function Task({ task }) {
     setPause(true);
   };
 
-  const removeTask = () => {
-    //TO DO 
+  const remove = () => {
+    //TO DO
+    // TO DO 
   }
 
   const checkbox = () => {
