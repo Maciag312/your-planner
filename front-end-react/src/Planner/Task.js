@@ -20,6 +20,10 @@ function Task({ task }) {
     setPause(true);
   };
 
+  const removeTask = () => {
+    //TO DO 
+  }
+
   const checkbox = () => {
     return (
       <Checkbox
