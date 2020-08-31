@@ -19,7 +19,7 @@ const initialState = {
       name: "first task",
       category: "",
       date: "31-Aug-2020",
-      isTimeLimited: false
+      isTimeLimited: false,
     },
     {
       duration: 123,
@@ -28,7 +28,7 @@ const initialState = {
       name: "second task",
       category: "",
       date: "31-Aug-2020",
-      isTimeLimited: true
+      isTimeLimited: true,
     },
     {
       duration: 123,
@@ -37,12 +37,19 @@ const initialState = {
       name: "third task",
       category: "",
       date: "30-Aug-2020",
-      isTimeLimited: false
+      isTimeLimited: false,
     },
   ],
   jwt: "",
-  chosenTask: {}
-
+  chosenTask: {
+    duration: 123,
+    date: 123,
+    isDone: false,
+    name: "second task",
+    category: "",
+    date: "31-Aug-2020",
+    isTimeLimited: true,
+  },
 };
 
 const addDays = (d, days) => {
@@ -85,10 +92,11 @@ const mainReducer = (state = initialState, action) => {
         jwt: action.jwt,
       };
 
-      case "TASK_CHOSEN": 
+    case "TASK_CHOSEN":
+      console.log(action.task);
       return {
         ...state,
-        chosenTask: action.task
+        chosenTask: action.task,
       };
 
     default:
