@@ -6,11 +6,14 @@ import ProgressBar from "./ProgressBar";
 import TasksList from "./TasksList";
 import "./Planner.css";
 import Dropdown from "./components/Dropdown";
+import { useHistory } from "react-router-dom";
 
 const Planner = (props) => {
   const [selectedCat, setSelectedCat] = useState(props.categories[0]);
   const [category, setCategory] = useState("");
   const [taskText, setTaskText] = useState("");
+
+  
   return (
     <div>
       <NavigationBar />

@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import Checkbox from "@material-ui/core/Checkbox";
 import "./Task.css";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-function Task({ task }) {
+
+function Task(props) {
+
+  let history = useHistory();
+
   const [play, setPlay] = useState(false);
-  const [pause, setPause] = useState(false);
   const [checked, setChecked] = useState(false);
 
   const handleChange = (event) => {
@@ -13,17 +18,11 @@ function Task({ task }) {
 
   const onPlayClicked = () => {
     setPlay(true);
-    setPause(false);
+    history.push('/timer');
   };
   const onPauseClicked = () => {
     setPlay(false);
-    setPause(true);
   };
-
-  const remove = () => {
-    //TO DO
-    // TO DO 
-  }
 
   const checkbox = () => {
     return (
@@ -37,37 +36,31 @@ function Task({ task }) {
   };
 
   const playPause = () => {
-    if (!play && !pause) {
-      return (
-        <button className="ui icon button" onClick={() => onPlayClicked()}>
-          <i className={`play icon`}></i>
-        </button>
-      );
-    } else if (play && !pause) {
-      return (
-        <button className="ui  icon button" onClick={() => onPauseClicked()}>
-          <i className={`pause icon`}></i>
-        </button>
-      );
-    } else if (!play && pause) {
-      return (
-        <button className="ui icon button" onClick={() => onPlayClicked()}>
-          <i className={`play icon`}></i>
-        </button>
-      );
-    }
+    return play ? (
+      <button className="ui  icon button" onClick={() => onPauseClicked()}>
+        <i className={`pause icon`}></i>
+      </button>
+    ) : (
+      <button className="ui icon button" onClick={() => onPlayClicked()}>
+        <i className={`play icon`}></i>
+      </button>
+    );
   };
 
   return (
     <div className="item">
       <div className="left floated content">
         <div className="task box">
-          {task.isTimeLimited ? playPause() : checkbox()}
-          {task.name}
+          {props.task.isTimeLimited ? playPause() : checkbox()}
+          {props.task.name}
         </div>
       </div>
     </div>
   );
 }
 
-export default Task;
+const mapStateToProps = (state) => {
+  return({timeLimitedTask: state.timeLimitedTask});
+}
+
+export default connect(mapStateToProps)(Task);
