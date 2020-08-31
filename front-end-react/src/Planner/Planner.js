@@ -11,6 +11,10 @@ const Planner = (props) => {
   const [selectedCat, setSelectedCat] = useState(props.categories[0]);
   const [category, setCategory] = useState("");
   const [taskText, setTaskText] = useState("");
+
+  const getFilterdByDateTasks = () => {
+    return props.tasks.filter(t=>t.date===props.day)
+  }
   return (
     <div>
       <NavigationBar />
@@ -56,7 +60,7 @@ const Planner = (props) => {
 
       <div className="planner-list">
         <div className="planner-segment ui segment">
-          <TasksList tasks={props.tasks} />
+          <TasksList tasks={getFilterdByDateTasks()} />
         </div>
       </div>
 
@@ -71,6 +75,7 @@ const mapStateToProps = (state) => ({
   tasks: state.tasks,
   authenticated: state.authenticated,
   jwt: state.jwt,
+  day: state.day
 });
 
 const mapDispatchToProps = {};
