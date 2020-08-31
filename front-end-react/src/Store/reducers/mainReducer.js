@@ -2,6 +2,7 @@ const initialState = {
   day: 0,
   info: "21",
   authenticated: false,
+
   categories: [
     { label: "Sport", value: "sport" },
     { label: "Education", value: "education" },
@@ -9,6 +10,7 @@ const initialState = {
     { label: "Leasure Time", value: "leasure" },
     { label: "Health", value: "health" },
   ],
+
   tasks: [
     {
       duration: 123,
@@ -50,7 +52,7 @@ const addDays = (d, days) => {
   const ye = new Intl.DateTimeFormat("en", { year: "numeric" }).format(date);
   const mo = new Intl.DateTimeFormat("en", { month: "short" }).format(date);
   const da = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(date);
-  return `${da}-${mo}-${ye}`;
+  return `${da} ${mo} ${ye}`;
 };
 const mainReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -79,6 +81,12 @@ const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         jwt: action.jwt,
+      };
+
+      case "TASK_CHOSEN": 
+      return {
+        ...state,
+        timeLimitedTask: action.task
       };
 
     default:
