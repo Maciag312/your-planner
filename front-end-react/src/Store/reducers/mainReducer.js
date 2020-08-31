@@ -14,7 +14,6 @@ const initialState = {
   tasks: [
     {
       duration: 123,
-      date: 312,
       isDone: true,
       name: "first task",
       category: "",
@@ -23,7 +22,6 @@ const initialState = {
     },
     {
       duration: 123,
-      date: 123,
       isDone: false,
       name: "second task",
       category: "",
@@ -32,7 +30,6 @@ const initialState = {
     },
     {
       duration: 123,
-      date: 312,
       isDone: false,
       name: "third task",
       category: "",
