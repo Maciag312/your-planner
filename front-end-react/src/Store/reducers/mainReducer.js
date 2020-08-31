@@ -41,6 +41,8 @@ const initialState = {
     },
   ],
   jwt: "",
+  chosenTask: {}
+
 };
 
 const addDays = (d, days) => {
@@ -86,7 +88,7 @@ const mainReducer = (state = initialState, action) => {
       case "TASK_CHOSEN": 
       return {
         ...state,
-        timeLimitedTask: action.task
+        chosenTask: action.task
       };
 
     default:

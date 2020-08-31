@@ -19,7 +19,7 @@ export const setDay = (day) => ({
   day
 })
 
-export const chosenTask = (task) =>{
+export const setChosenTask = (task) =>{
   return {
     type: "TASK_CHOSEN",
     payload: task
