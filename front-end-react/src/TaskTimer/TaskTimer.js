@@ -5,15 +5,16 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ReplayIcon from "@material-ui/icons/Replay";
 import { IconButton } from "@material-ui/core";
 import "./TaskTimer.css";
+import { connect } from 'react-redux'
 
-export default function TaskTimer(props) {
+ const TaskTimer = (props) => {
   return (
     <div className="timer">
       <IconButton className="timer__back__button">
         <ArrowBackIosIcon className="timer__back__icon" />
       </IconButton>
 
-      <div className="timer__task"> Task: {props.taskName}</div>
+      <div className="timer__task"> Task: {props.chosenTask.name}</div>
 
       <div className="timer__time__left">time left:</div>
 
@@ -37,3 +38,10 @@ export default function TaskTimer(props) {
     </div>
   );
 }
+
+const mapStateToProps = (state) => ({
+  chosenTask: state.chosenTask
+})
+
+export default connect(mapStateToProps)(TaskTimer)
+

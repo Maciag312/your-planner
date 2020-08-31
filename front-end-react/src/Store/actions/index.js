@@ -10,18 +10,18 @@ export const setAuthentication = (authenticated) => ({
   authenticated,
 });
 export const setJwt = (jwt) => ({
-  type: "SET_JWT", 
-  jwt
-})
+  type: "SET_JWT",
+  jwt,
+});
 
 export const setDay = (day) => ({
-  type: "SET_DAY", 
-  day
-})
+  type: "SET_DAY",
+  day,
+});
 
-export const chosenTask = (task) =>{
+export const setChosenTask = (task) => {
   return {
     type: "TASK_CHOSEN",
-    payload: task
-  }
-}
+    task
+  };
+};

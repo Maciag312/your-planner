@@ -3,10 +3,9 @@ import Checkbox from "@material-ui/core/Checkbox";
 import "./Task.css";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-
+import { setChosenTask } from "../Store/actions";
 
 function Task(props) {
-
   let history = useHistory();
 
   const [play, setPlay] = useState(false);
@@ -18,7 +17,9 @@ function Task(props) {
 
   const onPlayClicked = () => {
     setPlay(true);
-    history.push('/timer');
+    history.push("/timer");
+    console.log(props.task);
+    props.setChosenTask(props.task);
   };
   const onPauseClicked = () => {
     setPlay(false);
@@ -59,8 +60,9 @@ function Task(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return({timeLimitedTask: state.timeLimitedTask});
-}
+const mapStateToProps = (state) => ({ chosenTask: state.chosenTask });
+const mapDispatchToProps = {
+  setChosenTask,
+};
 
-export default connect(mapStateToProps)(Task);
+export default connect(mapStateToProps, mapDispatchToProps)(Task);
