@@ -37,6 +37,15 @@ const initialState = {
       date: "30-Aug-2020",
       isTimeLimited: false
     },
+    {
+      duration: 123,
+      date: 312,
+      isDone: false,
+      name: "fourth task",
+      category: "",
+      date: "04-Sep-2020",
+      isTimeLimited: false
+    },
   ],
   jwt: "",
 };
