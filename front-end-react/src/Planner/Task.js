@@ -37,6 +37,13 @@ function Task(props) {
   };
 
   const playPause = () => {
+    if(play){
+
+      //TODO Request
+    }else{
+      //TODO Redircet 
+      //TODO Request 
+    }
     return play ? (
       <button className="ui  icon button" onClick={() => onPauseClicked()}>
         <i className={`pause icon`}></i>
