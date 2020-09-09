@@ -6,13 +6,11 @@ import ProgressBar from "./ProgressBar";
 import TasksList from "./TasksList";
 import "./Planner.css";
 import Dropdown from "./components/Dropdown";
-import { useHistory } from "react-router-dom";
 
 const Planner = (props) => {
   const [selectedCat, setSelectedCat] = useState(props.categories[0]);
   const [category, setCategory] = useState("");
   const [taskText, setTaskText] = useState("");
-
 
   const getFilterdByDateTasks = () => {
     return props.tasks.filter(t=>t.date===props.day)
@@ -23,8 +21,8 @@ const Planner = (props) => {
       <DateBar />
       <br />
       <ProgressBar
-        numberOfDone={props.tasks.filter((t) => t.isDone === true).length}
-        numberOfTasks={props.tasks.length}
+        numberOfDone={getFilterdByDateTasks().filter((t) => t.isDone === true).length}
+        numberOfTasks={getFilterdByDateTasks().length}
       />
       <br />
       <div className="category-input-box">
