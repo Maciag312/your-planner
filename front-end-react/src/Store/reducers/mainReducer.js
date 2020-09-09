@@ -17,7 +17,8 @@ const initialState = {
       isDone: true,
       name: "first task",
       category: "",
-      date: "31-Aug-2020",
+      isRunning: false,
+      date: "31 Aug 2020",
       isTimeLimited: false,
     },
     {
@@ -25,7 +26,8 @@ const initialState = {
       isDone: false,
       name: "second task",
       category: "",
-      date: "31-Aug-2020",
+      isRunning: false,
+      date: "31 Aug 2020",
       isTimeLimited: true,
     },
     {
@@ -33,7 +35,8 @@ const initialState = {
       isDone: false,
       name: "third task",
       category: "",
-      date: "30-Aug-2020",
+      isRunning: false,
+      date: "30 Aug 2020",
       isTimeLimited: false,
     },
     {
@@ -42,18 +45,20 @@ const initialState = {
       isDone: false,
       name: "fourth task",
       category: "",
-      date: "04-Sep-2020",
+      isRunning: false,
+      date: "04 Sep 2020",
       isTimeLimited: false
     },
   ],
   jwt: "",
   chosenTask: {
-    duration: 123,
+    duration: 15000,
     date: 123,
     isDone: false,
     name: "second task",
     category: "",
-    date: "31-Aug-2020",
+    isRunning: false,
+    date: "31 Aug 2020",
     isTimeLimited: true,
   },
 };
