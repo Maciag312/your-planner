@@ -13,7 +13,7 @@ export const DateBar = (props) => {
         const mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d)
         const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d)
 
-        props.setDay(`${da}-${mo}-${ye}`)
+        props.setDay(`${da} ${mo} ${ye}`)
 
         return () => {
             

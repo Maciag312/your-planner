@@ -29,6 +29,7 @@ import { setChosenTask } from "../Store/actions";
      
      let time = (props.chosenTask.duration-(new Date()-startDate));
      if(time>0){
+      document.title = (time/1000).toFixed(0) + "s";
       return (time/1000).toFixed(0) + "s";
      }
      else{
@@ -36,6 +37,7 @@ import { setChosenTask } from "../Store/actions";
        let chosenT = props.chosenTask;
        chosenT.isDone = true;
        props.setChosenTask(Object.assign({},chosenT));
+       document.title = "completed";
       return "0 s";
      }
    }
