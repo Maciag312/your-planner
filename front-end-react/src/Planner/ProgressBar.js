@@ -4,6 +4,7 @@ import "./ProgressBar.css";
 
 function ProgressBar(props) {
   const taskBarWidth = 290;
+  let isThereAnyTasks = props.numberOfTasks===0?false:true;
   return (
     <div>
       <div>
@@ -14,7 +15,7 @@ function ProgressBar(props) {
           className="inside"
           style={{
             width:
-              (taskBarWidth * props.numberOfDone) / props.numberOfTasks + "px",
+              ((taskBarWidth * props.numberOfDone) / (isThereAnyTasks?(props.numberOfTasks):1) + "px"),
           }}
         ></div>
       </div>
