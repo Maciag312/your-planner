@@ -13,6 +13,7 @@ const initialState = {
 
   tasks: [
     {
+      id: 0,
       duration: 123,
       isDone: true,
       name: "first task",
@@ -22,6 +23,7 @@ const initialState = {
       isTimeLimited: false,
     },
     {
+      id: 1, 
       duration: 123,
       isDone: false,
       name: "second task",
@@ -31,6 +33,7 @@ const initialState = {
       isTimeLimited: true,
     },
     {
+      id: 2,
       duration: 123,
       isDone: false,
       name: "third task",
@@ -40,6 +43,7 @@ const initialState = {
       isTimeLimited: false,
     },
     {
+      id: 3,
       duration: 123,
       date: 312,
       isDone: false,
@@ -49,9 +53,32 @@ const initialState = {
       date: "04 Sep 2020",
       isTimeLimited: false
     },
+    {
+      id: 3,
+      duration: 18000,
+      date: 312,
+      isDone: false,
+      name: "1 task",
+      category: "",
+      isRunning: false,
+      date: "12 Sep 2020",
+      isTimeLimited: true,
+    },
+    {
+      id: 4,
+      duration: 10000,
+      date: 312,
+      isDone: false,
+      name: "2 task",
+      category: "",
+      isRunning: false,
+      date: "12 Sep 2020",
+      isTimeLimited: true,
+    },
   ],
   jwt: "",
   chosenTask: {
+    id: 1,
     duration: 15000,
     date: 123,
     isDone: false,
@@ -60,7 +87,9 @@ const initialState = {
     isRunning: false,
     date: "31 Aug 2020",
     isTimeLimited: true,
+    
   },
+  
 };
 
 const addDays = (d, days) => {

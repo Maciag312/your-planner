@@ -8,40 +8,66 @@ import "./TaskTimer.css";
 import { connect } from 'react-redux'
 import { setChosenTask } from "../Store/actions";
 
+import { useLocation, useHistory } from "react-router-dom";
 
+
+//TODO 1. change break task to stop task and go to following task 
+//TODO 2. create in redux find following task and set following task 
  const TaskTimer = (props) => {
+  
+  let loc = useLocation();
+  let his = useHistory();
+
    const [timeLeft,setTimeLeft] = React.useState((props.chosenTask.duration/1000).toFixed(0) + "s")
 
    const [timer, setTimer] = React.useState(0);
 
    console.log("t :" + timer)
 
-   const onTaskChange = () => {
+  const onTaskChange = () => {
+    console.log(" on task change")
+    let chosenTask = props.chosenTask;
+    chosenTask.isRunning = true;
+    setTimeLeft((props.chosenTask.duration/1000).toFixed(0) + "s");
+    props.setChosenTask(chosenTask)
+    clearInterval(timer);
+    const stDate  = new Date()
+    setTimer(setInterval(()=>{
+      setTimeLeft(calculateTimeLeft(stDate));},1000))
   }
   const completeTask = () => {
     clearInterval(timer);
     let chosenT = props.chosenTask;
     chosenT.isDone = true;
+    document.title = "completed"
     props.setChosenTask(Object.assign({},chosenT));
   }
 
+  const isTaskViewPresent=()=>{
+    return loc.pathname==="/timer"?true:false;
+  }
    const calculateTimeLeft = (startDate) => {
-     
      let time = (props.chosenTask.duration-(new Date()-startDate));
-     if(time>0){
-      document.title = (time/1000).toFixed(0) + "s";
-      return (time/1000).toFixed(0) + "s";
-     }
-     else{
-       clearInterval(timer);
-       let chosenT = props.chosenTask;
-       chosenT.isDone = true;
-       props.setChosenTask(Object.assign({},chosenT));
-       document.title = "completed";
-      return "0 s";
-     }
+     if(props.chosenTask.isRunning){
+      if(time>0){
+        document.title = (time/1000).toFixed(0) + "s";
+        return (time/1000).toFixed(0) + "s";
+      }
+      else{
+        console.log("Clear")
+        clearInterval(timer);
+        let chosenT = props.chosenTask;
+        chosenT.isRunning = false;
+        chosenT.isDone = true;
+        props.setChosenTask(Object.assign({},chosenT));
+        document.title = "completed";
+        return "0 s";
+      }
    }
-   
+  }
+   const goToPlanner = () => {
+     his.push("/planner");
+   }
    const breakTask = () => {
      clearInterval(timer);
    }
@@ -50,36 +76,30 @@ import { setChosenTask } from "../Store/actions";
      let chosenT = props.chosenTask;
      if(chosenT.isDone){
       chosenT.isDone = false;
+      chosenT.isRunning = true;
       props.setChosenTask(chosenT)
      }
      const stDate = new Date();
      setTimer(setInterval(()=>{
      setTimeLeft(calculateTimeLeft(stDate));
      },1000));
-   }
-   
+   }   
 
-
-  useEffect(() => {
-    const stDate  = new Date()
-    setTimer(setInterval(()=>{
-      setTimeLeft(calculateTimeLeft(stDate));},1000))
-    return () => {
-    }
-  }, [])
 
    useEffect(() => {
     onTaskChange()
     return () => {
     }
-  }, [props.chosenTask])
+  }, [props.chosenTask.id])
 
-  return (
+  
+
+  return (<div>
+    {isTaskViewPresent()?
     <div className="timer">
-
       
       <IconButton className="timer__back__button">
-        <ArrowBackIosIcon className="timer__back__icon" />
+        <ArrowBackIosIcon onClick={goToPlanner} className="timer__back__icon" />
       </IconButton>
 
       <div className="timer__task"> Task: {props.chosenTask.name}</div>
@@ -103,7 +123,7 @@ import { setChosenTask } from "../Store/actions";
           <ReplayIcon />
         </button>
       </div>
-    </div>
+    </div>:<div></div>}</div>
   );
 }
 
