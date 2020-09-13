@@ -1,12 +1,11 @@
-import React, { Component, useEffect } from 'react'
-import { connect } from 'react-redux'
-import {nextDay, previousDay, setDay} from './../Store/actions/index'
+import React, {useEffect } from './node_modules/react'
+import { connect } from './node_modules/react-redux'
+import {nextDay, previousDay, setDay} from '../../Store/actions'
 import leftarrow from "../Home/pngs/leftarrow.png"
 import rightarrow from "../Home/pngs/rightarrow.png"
 import './DateBar.css'
+
 export const DateBar = (props) => {
-
-
     useEffect(() => {
         const d = new Date()
         const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d)

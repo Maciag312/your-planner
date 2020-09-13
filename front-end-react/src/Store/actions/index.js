@@ -1,3 +1,5 @@
+let nextTaskId = 0;
+
 export const nextDay = () => ({
   type: "NEXT_DAY",
 });
@@ -19,34 +21,59 @@ export const setDay = (day) => ({
   day,
 });
 
-export const setChosenTask = (task) => {
+export const setChosenTask = (chosenTask) => {
   return {
-    type: "TASK_CHOSEN",
-    task
+    type: "SET_CHOSEN_TASK",
+    chosenTask,
   };
 };
 
-// export const playChosenTask = (date) => {
-//   return {
-//     type: "PLAY_CHOSEN_TASK",
-//     date
-//   };
-// };
+export const addTask = (text, category) => {
+  return {
+    type: "ADD_TASK",
+    id: nextTaskId++,
+    text,
+    category,
+  };
+};
 
-// export const completeChosenTask = (date) => {
-//   return {
-//     type: "COMPLETE_CHOSEN_TASK",
-//   };
-// };
+export const toggleTodo = (id) => {
+  return {
+    type: "TOGGLE_TODO",
+    id,
+  };
+};
 
-// export const repeatChosenTask = () => {
-//   return {
-//     type: "REPEAT_CHOSEN_TASK",
-//   };
-// };
+export const removeTask = (id) => {
+  return {
+    type: "REMOVE_TASK",
+    id,
+  };
+};
 
-// export const breakChosenTask = (date) => {
-//   return {
-//     type: "BREAK_CHOSEN_TASK",
-//   };
-// };
+export const addCategory = (label) => {
+  return {
+    type: "ADD_CUSTOM_CATEGORY",
+    label,
+  };
+};
+
+export const removeCategory = (value) => {
+  return {
+    type: "REMOVE_CUSTOM_CATEGORY",
+    value,
+  };
+};
+
+export const setVisibilityFilter = (filter) => {
+  return {
+    type: "SET_VISIBILITY_FILTER",
+    filter,
+  };
+};
+
+export const VisibilityFilters = {
+  SHOW_ALL: "SHOW_ALL",
+  SHOW_COMPLETED: "SHOW_COMPLETED",
+  SHOW_ACTIVE: "SHOW_ACTIVE",
+};

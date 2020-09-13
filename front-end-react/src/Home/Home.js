@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import "./Home.css";
 
 export const Home = (props) => {
+  console.log(props)
   return (
     <div className="home">
       <div className="home-box container">
@@ -10,14 +11,14 @@ export const Home = (props) => {
         <input className="home__input" />
         <br/>
         <button className="home-button ui blue button">Begin adding your tasks</button>
-         <div>{props.authenticated.toString()}</div>
+         <div>{props.authentication.toString()}</div>
       </div>
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
-  authenticated: state.authenticated,
+  authentication: state.authentication,
 });
 
 const mapDispatchToProps = {};

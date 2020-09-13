@@ -1,5 +1,4 @@
-import React from "react";
-
+import React from "./node_modules/react";
 import "./ProgressBar.css";
 
 function ProgressBar(props) {
