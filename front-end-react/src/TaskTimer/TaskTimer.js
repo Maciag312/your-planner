@@ -102,13 +102,13 @@ import { useLocation, useHistory } from "react-router-dom";
         <ArrowBackIosIcon onClick={goToPlanner} className="timer__back__icon" />
       </IconButton>
 
-      <div className="timer__task"> Task: {props.todos.chosenTask.title}</div>
+      <div className="timer__task"> Task: {props.chosenTask.title}</div>
 
       <div className="timer__time__left">time left:</div>
 
       <div className="timer__count__down">
         {" "}
-        {props.todos.chosenTask.isDone ? "completed" : timeLeft}
+        {props.chosenTask.isDone ? "completed" : timeLeft}
       </div>
 
       <div className="timer__next__task"> Following task: Matematyka </div>
@@ -140,7 +140,7 @@ import { useLocation, useHistory } from "react-router-dom";
 };
 
 const mapStateToProps = (state) => ({
-  todos: state.todos,
+  chosenTask: state.todos.chosenTask
 });
 
 const mapDispatchToProps = {

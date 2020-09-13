@@ -52,7 +52,7 @@ const TasksList = (props) => {
     );
   };
 
-  const returnedList = props.todos.allTasks.map((task) => (
+  const returnedList = props.tasks.map((task) => (
     <div
       key={task.id}
       completed={task.completed.toString()}

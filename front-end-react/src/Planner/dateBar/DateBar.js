@@ -1,11 +1,13 @@
-import React, {useEffect } from './node_modules/react'
-import { connect } from './node_modules/react-redux'
+import React, {useEffect } from 'react'
+import { connect } from 'react-redux'
 import {nextDay, previousDay, setDay} from '../../Store/actions'
-import leftarrow from "../Home/pngs/leftarrow.png"
-import rightarrow from "../Home/pngs/rightarrow.png"
+import leftarrow from "../../Home/pngs/leftarrow.png"
+import rightarrow from "../../Home/pngs/rightarrow.png"
 import './DateBar.css'
 
 export const DateBar = (props) => {
+    console.log(props.day)
+
     useEffect(() => {
         const d = new Date()
         const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d)
@@ -38,7 +40,7 @@ export const DateBar = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    day: state.day
+    day: state.date.day
 })
 
 const mapDispatchToProps = {
