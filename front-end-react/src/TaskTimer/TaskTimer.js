@@ -18,18 +18,30 @@ import { useLocation, useHistory } from "react-router-dom";
   let loc = useLocation();
   let his = useHistory();
 
-   const [timeLeft,setTimeLeft] = React.useState((props.chosenTask.duration/1000).toFixed(0) + "s")
+   const [timeLeft,setTimeLeft] = React.useState((props.chosenTask.durationLeft/1000).toFixed(0) + "s")
   const [timer, setTimer] = React.useState(0);
 
-  console.log("t :" + timer);
+  console.log(props.chosenTask)  
+
+  const getFollowingTask = (currentTask) => {
+    console.log(props.tasks.map(t=>t.id))
+    console.log(currentTask.id)
+    let taskIndex = props.tasks.map(t=>t.id).indexOf(currentTask.id)
+    if(taskIndex>=props.tasks.length){
+      console.log("no task")
+    }else{
+      console.log(taskIndex)
+    }
+    
+  }
 
 
   const onTaskChange = () => {
     console.log(" on task change")
     let chosenTask = props.chosenTask;
     chosenTask.isRunning = true;
-    setTimeLeft((props.chosenTask.duration/1000).toFixed(0) + "s");
-    props.setChosenTask(chosenTask)
+    setTimeLeft((props.chosenTask.durationLeft/1000).toFixed(0) + "s");
+    props.setChosenTask(Object.assign({},chosenTask));
     clearInterval(timer);
     const stDate  = new Date()
     setTimer(setInterval(()=>{
@@ -46,12 +58,35 @@ import { useLocation, useHistory } from "react-router-dom";
   const isTaskViewPresent=()=>{
     return loc.pathname==="/timer"?true:false;
   }
-   const calculateTimeLeft = (startDate) => {
-     let time = (props.chosenTask.duration-(new Date()-startDate));
+
+  const formatTime = (s) => {
+    let ms = s % 1000;
+    s = (s - ms) / 1000;
+    let secs = s % 60;
+    s = (s - secs) / 60;
+    let mins = s % 60;
+    let hrs = (s - mins) / 60;
+
+    let result = ""
+
+    if(hrs>0){
+      result += hrs.toString() + "h ";
+    }
+    if(mins>0){
+      result += mins.toString() + "m ";
+    }
+    if(secs>0){ 
+      result += secs.toString() + "s";
+    }
+    return result
+ }
+  const calculateTimeLeft = (startDate) => {
+     let time = (props.chosenTask.durationLeft-(new Date()-startDate));
      if(props.chosenTask.isRunning){
       if(time>0){
-        document.title = (time/1000).toFixed(0) + "s";
-        return (time/1000).toFixed(0) + "s";
+        let ftime = formatTime(time);
+        document.title = ftime;
+        return ftime;
       }
       else{
         console.log("Clear")
@@ -69,6 +104,7 @@ import { useLocation, useHistory } from "react-router-dom";
      his.push("/planner");
    }
    const breakTask = () => {
+     getFollowingTask(props.chosenTask);
      clearInterval(timer);
    }
    const repeatTask = () => {
@@ -88,8 +124,6 @@ import { useLocation, useHistory } from "react-router-dom";
 
    useEffect(() => {
     onTaskChange()
-    return () => {
-    }
   }, [props.chosenTask.id])
 
   
@@ -140,7 +174,8 @@ import { useLocation, useHistory } from "react-router-dom";
 };
 
 const mapStateToProps = (state) => ({
-  chosenTask: state.todos.chosenTask
+  chosenTask: state.todos.chosenTask,
+  tasks: state.todos.allTasks
 });
 
 const mapDispatchToProps = {

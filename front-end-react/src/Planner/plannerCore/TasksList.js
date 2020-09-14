@@ -28,7 +28,7 @@ const TasksList = (props) => {
   const handlePlayClick = (task) => {
     console.log("onPlay", play);
     setPlay(!play);
-    setChosenTask(task);
+    props.setChosenTask(task);
     history.push("/timer");
   };
 
