@@ -2,7 +2,8 @@ const initialState = {
   allTasks: [
     {
       id: 100,
-      duration: 123,
+      initialDuration: 15000,
+      durationLeft: 15000,
       completed: true,
       title: "first task",
       category: "",
@@ -12,7 +13,8 @@ const initialState = {
     },
     {
       id: 101,
-      duration: 123,
+      initialDuration: 15000,
+      durationLeft: 1500,
       completed: false,
       title: "second task",
       category: "",
@@ -22,7 +24,8 @@ const initialState = {
     },
     {
       id: 102,
-      duration: 123,
+      initialDuration: 15000,
+      durationLeft: 15000,
       completed: false,
       title: "third task",
       category: "",
@@ -32,19 +35,21 @@ const initialState = {
     },
     {
       id: 103,
-      duration: 123,
+      initialDuration: 190000,
+      durationLeft: 190000,
       completed: false,
       title: "fourth task",
       category: "",
       isRunning: false,
       date: "11 Sep 2020",
-      isTimeLimited: false,
+      isTimeLimited: true,
     },
   ],
 
   chosenTask: {
     id: 1,
-    duration: 15000,
+    initialDuration: 15000,
+    durationLeft: 15000,
     date: 123,
     isDone: false,
     name: "second task",
