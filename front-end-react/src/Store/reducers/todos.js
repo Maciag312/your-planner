@@ -1,11 +1,8 @@
 const initialState = {
   allTasks: [
-    
   ],
 
-  chosenTask: {
-    
-  }
+  chosenTask: {}
 };
 
 const todos = (state = initialState, action) => {
