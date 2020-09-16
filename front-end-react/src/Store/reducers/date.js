@@ -1,6 +1,5 @@
 const initialState = {
-  day: "13 Sep 2020",
-  info: "13 Sep 2020",
+  day: "",
 };
 
 const addDays = (d, days) => {

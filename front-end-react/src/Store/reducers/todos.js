@@ -1,57 +1,10 @@
 const initialState = {
   allTasks: [
-    {
-      id: 100,
-      duration: 123,
-      completed: true,
-      title: "first task",
-      category: "",
-      isRunning: false,
-      date: "11 Sep 2020",
-      isTimeLimited: false,
-    },
-    {
-      id: 101,
-      duration: 123,
-      completed: false,
-      title: "second task",
-      category: "",
-      isRunning: false,
-      date: "11 Sep 2020",
-      isTimeLimited: true,
-    },
-    {
-      id: 102,
-      duration: 123,
-      completed: false,
-      title: "third task",
-      category: "",
-      isRunning: false,
-      date: "11 Sep 2020",
-      isTimeLimited: false,
-    },
-    {
-      id: 103,
-      duration: 123,
-      completed: false,
-      title: "fourth task",
-      category: "",
-      isRunning: false,
-      date: "11 Sep 2020",
-      isTimeLimited: false,
-    },
+    
   ],
 
   chosenTask: {
-    id: 1,
-    duration: 15000,
-    date: 123,
-    isDone: false,
-    name: "second task",
-    category: "",
-    isRunning: false,
-    date: "31 Aug 2020",
-    isTimeLimited: true,
+    
   }
 };
 
@@ -66,8 +19,9 @@ const todos = (state = initialState, action) => {
           id: action.id,
           category: action.category,
           isRunning: false,
-          duration: 20,
-          date: "11 Sep 2020",
+          duration: action.duration,
+          isTimeLimited: action.isTimeLimited,
+          date: action.date,
         }),
       };
     case "TOGGLE_TODO":
@@ -87,7 +41,7 @@ const todos = (state = initialState, action) => {
     case "SET_CHOSEN_TASK":
       return {
         ...state,
-        chosenTask: state.chosenTask,
+        chosenTask: action.chosenTask,
       };
 
     default:
