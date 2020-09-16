@@ -1,0 +1,52 @@
+.add_container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.add_form {
+  display: flex;
+  width: 65%;
+  margin-left: 10px;
+  margin-right: 10px;
+  align-self: center;
+}
+
+.add_picker_container {
+  width: "150px";
+  margin-right: 10px;
+  
+}
+
+.add_picker {
+  width: 100%;
+  height: 100%;
+}
+.add_dropdown_container {
+  height: 38px;
+  margin-right: 10px;
+}
+
+.add_positive_button {
+  margin-left: 10px;
+  align-self: center;
+}
+
+@media screen and (max-width: 1302px) {
+  .add_container > div {
+    margin: 6px;
+  }
+
+  .add_form {
+    width: 85%;
+  }
+
+  @media screen and (max-width: 415px) {
+    .add_container {
+      flex-direction: column;
+    }
+    .add_form {
+      width: 90%;
+    }
+  }
+}

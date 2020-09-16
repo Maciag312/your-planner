@@ -1,38 +1,63 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { addTask } from "../../Store/actions";
 import Dropdown from "../reusableComponents/Dropdown";
 import { TimePicker } from "antd";
 import moment from "moment";
-import "./AddToDo.js";
+import "./AddToDo.css";
 import "antd/dist/antd.css";
 
 export const AddToDo = (props) => {
   const [selectedOption, setSelectedOption] = useState("");
-  const [time, setTime] = useState('')
+  const [duration, setDuration] = useState(0);
   const [text, setText] = useState("");
+  const [showTime, setShowTime] = useState("");
+
+  const ref = useRef();
+ 
 
   const handleClick = () => {
     if (text !== "") {
-      props.addTask(text, selectedOption);
+      add();
+      setDuration(0);
+      setShowTime("");
       setText(""); //request TODO
       clearSelectedOption();
     }
   };
+  
+  const onTimeChange = (time, timeString) => {
+    var d = new moment(timeString, "HH:mm:ss");
 
-  // const validateDropdown = () => {
-  //   if (selectedOption === "") {
-  //     return (
-  //       <div class="ui pointing red basic label">Please enter a value</div>
-  //     );
-  //   } else selectedOption;
-  // };
+    var hours = d.hours() * 3600000;
+    var minutes = d.minutes() * 60000;
+    var seconds = d.seconds() * 1000;
+
+    var milis = hours + minutes + seconds;
+
+    setShowTime(time);
+    setDuration(milis);
+  };
+
+  const add = () =>
+    props.addTask(
+      text,
+      selectedOption,
+      duration !== 0 ? true : false, //isTimeLimited
+      duration,
+      props.date.day
+    );
 
   const onFormSubmit = (event) => {
-    if (text !== "") {
+    console.log("ref: ", ref.current);
+    console.log("event: ", event.target);
+
+    if (ref.current.contains(event.target) && text !== "") {
       event.preventDefault();
-      props.addTask(text, selectedOption);
+      add();
       setText(""); //request TODO
+      setShowTime("");
+      setDuration(0);
       clearSelectedOption();
     } else event.preventDefault();
   };
@@ -45,20 +70,9 @@ export const AddToDo = (props) => {
     setSelectedOption("");
   };
 
-
   return (
-    <div style={{ display: "flex" }}>
-      <form
-        style={{
-          display: "flex",
-          width: "73%",
-          marginLeft: "10px",
-          marginRight: "10px",
-          alignSelf: "center",
-        }}
-        onSubmit={onFormSubmit}
-        className="ui form"
-      >
+    <form ref={ref} className="add_container">
+      <form onSubmit={onFormSubmit} className="add_form ui form">
         <input
           className="ui input"
           value={text}
@@ -67,27 +81,36 @@ export const AddToDo = (props) => {
         />
       </form>
 
-      <div style={{width: "200px", backgroundColor: 'green'}}>
-        <TimePicker inputReadOnly={true} showNow={false} />
+      <div className="add_picker_container">
+        <TimePicker
+          className="add_picker"
+          inputReadOnly={true}
+          showNow={false}
+          onChange={onTimeChange}
+          allowClear={true}
+          value={showTime}
+        />
       </div>
-        
-      <div style={{ height: "38px" }}>
+
+      <form className="add_dropdown_container">
         <Dropdown
           selectedOption={selectedOption}
           onSelectedOptionChange={setSelectedOption}
           clearSelectedOption={clearSelectedOption}
         />
-      </div>
-        
+      </form>
+
       <div
-        className="ui positive button"
+        className="add_positive_button ui positive button"
         onClick={handleClick}
-        style={{ marginLeft: "10px", alignSelf: "center" }}
       >
         Add task
       </div>
-    </div>
+    </form>
   );
 };
+const mapStateToProps = (state) => ({
+  date: state.date,
+});
 
-export default connect(null, { addTask })(AddToDo);
+export default connect(mapStateToProps, { addTask })(AddToDo);

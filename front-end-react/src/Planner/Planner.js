@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import NavigationBar from "./navigationBar/NavigationBar";
 import DateBar from "./dateBar/DateBar";
@@ -14,13 +14,15 @@ const Planner = (props) => {
   return (
     <div>
       <NavigationBar />
+
       <DateBar />
       <br />
       <ProgressBar
         numberOfDone={getFilterdByDateTasks().filter((t) => t.isDone === true).length}
         numberOfTasks={getFilterdByDateTasks().length}
       />
-      
+      <br/>
+      <br/>
       <AddToDo />
       <br />
       <Menu />

@@ -102,6 +102,8 @@ const Dropdown = (props) => {
     }
   };
 
+
+
   const validateInput = (option) => {
     if (dropdownText === "") {
       return categoryRow(option);
@@ -139,6 +141,7 @@ const Dropdown = (props) => {
           maxLength={20}
           onClick={props.clearSelectedOption}
           style={{ textAlign: "left" }}
+          onSubmit={handleAddCategoryClick}
         />
 
         {labelOn ? <div className="divider default text">Category </div> : ""}
