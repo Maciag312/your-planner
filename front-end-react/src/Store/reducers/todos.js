@@ -70,8 +70,9 @@ const todos = (state = initialState, action) => {
           id: action.id,
           category: action.category,
           isRunning: false,
-          duration: 20,
-          date: "11 Sep 2020",
+          duration: action.duration,
+          isTimeLimited: action.isTimeLimited,
+          date: action.date,
         }),
       };
     case "TOGGLE_TODO":

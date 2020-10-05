@@ -28,12 +28,15 @@ export const setChosenTask = (chosenTask) => {
   };
 };
 
-export const addTask = (text, category) => {
+export const addTask = (text, category, isTimeLimited, duration, date) => {
   return {
     type: "ADD_TASK",
     id: nextTaskId++,
     text,
     category,
+    isTimeLimited,
+    duration,
+    date,
   };
 };
 
