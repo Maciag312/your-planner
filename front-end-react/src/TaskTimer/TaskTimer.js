@@ -10,8 +10,6 @@ import {setChosenTask} from "../Store/actions"
 import {alterTask} from "../Store/actions"
 
 import { useLocation, useHistory } from "react-router-dom";
-import { EditorFormatListBulleted } from "material-ui/svg-icons";
-import { FormatListBulletedTwoTone, TrainRounded } from "@material-ui/icons";
 
 
 //TODO 1. break task toggle to start/stop and save time to chosen task and task 
@@ -109,6 +107,7 @@ const getFollowingTask = (currentTask) => {
   }
 
   const onTaskChange = () => {
+    clearInterval(indexIntervalTaskTime)
     let chT = props.chosenTask;
     chT.isRunning = true;
     setRunning(true)
