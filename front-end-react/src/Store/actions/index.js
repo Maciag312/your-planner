@@ -75,6 +75,13 @@ export const setVisibilityFilter = (filter) => {
   };
 };
 
+export const alterTask = (task) => {
+  return {
+    type: "ALTER_TASK",
+    task,
+  };
+};
+
 export const VisibilityFilters = {
   SHOW_ALL: "SHOW_ALL",
   SHOW_COMPLETED: "SHOW_COMPLETED",

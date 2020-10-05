@@ -7,59 +7,19 @@ import { IconButton } from "@material-ui/core";
 import "./TaskTimer.css";
 import { connect } from "react-redux";
 import {setChosenTask} from "../Store/actions"
+import {alterTask} from "../Store/actions"
 
 import { useLocation, useHistory } from "react-router-dom";
+import { EditorFormatListBulleted } from "material-ui/svg-icons";
+import { FormatListBulletedTwoTone, TrainRounded } from "@material-ui/icons";
 
 
-//TODO 1. change break task to stop task and go to following task 
-//TODO 2. create in redux find following task and set following task 
+//TODO 1. break task toggle to start/stop and save time to chosen task and task 
  const TaskTimer = (props) => {
-  
-  let loc = useLocation();
-  let his = useHistory();
-
-   const [timeLeft,setTimeLeft] = React.useState((props.chosenTask.durationLeft/1000).toFixed(0) + "s")
-  const [timer, setTimer] = React.useState(0);
-
-  console.log(props.chosenTask)  
-
-  const getFollowingTask = (currentTask) => {
-    console.log(props.tasks.map(t=>t.id))
-    console.log(currentTask.id)
-    let taskIndex = props.tasks.map(t=>t.id).indexOf(currentTask.id)
-    if(taskIndex>=props.tasks.length){
-      console.log("no task")
-    }else{
-      console.log(taskIndex)
-    }
-    
-  }
-
-
-  const onTaskChange = () => {
-    console.log(" on task change")
-    let chosenTask = props.chosenTask;
-    chosenTask.isRunning = true;
-    setTimeLeft((props.chosenTask.durationLeft/1000).toFixed(0) + "s");
-    props.setChosenTask(Object.assign({},chosenTask));
-    clearInterval(timer);
-    const stDate  = new Date()
-    setTimer(setInterval(()=>{
-      setTimeLeft(calculateTimeLeft(stDate));},1000))
-  }
-  const completeTask = () => {
-    clearInterval(timer);
-    let chosenT = props.chosenTask;
-    chosenT.isDone = true;
-    document.title = "completed"
-    props.setChosenTask(Object.assign({},chosenT));
-  }
-
-  const isTaskViewPresent=()=>{
-    return loc.pathname==="/timer"?true:false;
-  }
 
   const formatTime = (s) => {
+    if(s<=0) return "completed"
+
     let ms = s % 1000;
     s = (s - ms) / 1000;
     let secs = s % 60;
@@ -80,45 +40,130 @@ import { useLocation, useHistory } from "react-router-dom";
     }
     return result
  }
-  const calculateTimeLeft = (startDate) => {
-     let time = (props.chosenTask.durationLeft-(new Date()-startDate));
-     if(props.chosenTask.isRunning){
-      if(time>0){
-        let ftime = formatTime(time);
-        document.title = ftime;
-        return ftime;
-      }
-      else{
-        console.log("Clear")
-        clearInterval(timer);
-        let chosenT = props.chosenTask;
-        chosenT.isRunning = false;
-        chosenT.isDone = true;
-        props.setChosenTask(Object.assign({},chosenT));
-        document.title = "completed";
-        return "0 s";
-      }
-   }
+  
+  let loc = useLocation();
+  let his = useHistory();
+
+const [timeLeft,setTimeLeft] = React.useState(formatTime(props.chosenTask.durationLeft));
+const [isRunning, setRunning ] = React.useState(false);
+const [indexIntervalTaskTime, setIndexIntervalTaskTime] = React.useState(0);
+
+
+
+
+const saveTaskTime = (chosenTas) => {
+  alterTask(Object.assign(chosenTas))
+}
+
+
+const getFollowingTask = (currentTask) => {
+  let taskIndex = props.tasks.map(t=>t.id).indexOf(currentTask.id)
+  if(taskIndex>=props.tasks.length){
+    console.log("no task")
+    return undefined
+   }else{
+      return props.tasks[taskIndex+1]
+    } 
   }
+
+  const getFollowingTaskName = () => {
+    let t = getFollowingTask(props.chosenTask)
+    if(t===undefined) return "There is no following task"
+    else return t.title;
+  }
+
+  const intervalTaskTimer = () => {
+    if(props.chosenTask.isRunning){
+      console.log("intervalTaskTimer")
+      var index = setInterval(() => {
+       if(!updateTaskTimeEverySecond()){clearInterval(index)};
+      }, 1000);
+      setIndexIntervalTaskTime(index);
+    }
+  }
+
+  const updateTaskTimeEverySecond = () => {
+    let chT = props.chosenTask;
+    if(chT.durationLeft > 1000){
+      chT.durationLeft -= 1000;
+    }else{
+      chT.isRunning = false;
+      setRunning(false)
+      document.title = "completed"
+      chT.completed = true;
+      chT.durationLeft = 0;
+    }
+    console.log(chT);
+    let time = formatTime(chT.durationLeft)
+    document.title = time;
+    setTimeLeft(time);
+    saveTaskTime(chT);
+    if(chT.durationLeft<=0)
+      return false //when chosen task is finished itreturns false to clear interval 
+    return true
+  }
+  
+  const clearIntervalTimer = () => {
+    console.log("clear interval " + indexIntervalTaskTime )
+    clearInterval(indexIntervalTaskTime);
+  }
+
+  const onTaskChange = () => {
+    let chT = props.chosenTask;
+    chT.isRunning = true;
+    setRunning(true)
+    saveTaskTime(chT);
+    console.log("on task change");
+    intervalTaskTimer()
+    
+  }
+  const completeTask = () => {
+    console.log("complete task");
+    let chT = props.chosenTask;
+    chT.durationLeft = 0;
+    chT.completed = true;
+    setTimeLeft(formatTime(chT.durationLeft));
+    saveTaskTime(chT);
+  }
+
+  const isTaskViewPresent=()=>{
+    return loc.pathname==="/timer"?true:false;
+  }
+
+  
    const goToPlanner = () => {
      his.push("/planner");
    }
-   const breakTask = () => {
-     getFollowingTask(props.chosenTask);
-     clearInterval(timer);
+   const toggleStopTask = () => {
+    console.log("toggle stop task");
+    if(props.chosenTask.isRunning){
+      let chT = props.chosenTask;
+      chT.isRunning = false;
+      setRunning(false)
+      saveTaskTime(chT);
+      clearIntervalTimer();
+      document.title = "stopped"
+
+    }else if(!props.chosenTask.completed){
+      let chT = props.chosenTask;
+      chT.isRunning = true;
+      setRunning(true)
+      saveTaskTime(chT);
+      intervalTaskTimer();
+    }
    }
    const repeatTask = () => {
-     clearInterval(timer);
-     let chosenT = props.chosenTask;
-     if(chosenT.isDone){
-      chosenT.isDone = false;
-      chosenT.isRunning = true;
-      props.setChosenTask(chosenT)
-     }
-     const stDate = new Date();
-     setTimer(setInterval(()=>{
-     setTimeLeft(calculateTimeLeft(stDate));
-     },1000));
+    clearIntervalTimer()
+    console.log("repeat task");
+    let chT = props.chosenTask;
+    chT.durationLeft = chT.initialDuration;
+    chT.isRunning = true;
+    setRunning(true)
+    chT.completed = false;
+    console.log(chT)
+    setTimeLeft(formatTime(chT.durationLeft));
+    saveTaskTime(chT);
+    intervalTaskTimer()
    }   
 
 
@@ -142,10 +187,10 @@ import { useLocation, useHistory } from "react-router-dom";
 
       <div className="timer__count__down">
         {" "}
-        {props.chosenTask.isDone ? "completed" : timeLeft}
+        {timeLeft}
       </div>
 
-      <div className="timer__next__task"> Following task: Matematyka </div>
+      <div className="timer__next__task"> Following task: {getFollowingTaskName()} </div>
 
       <div className="timer__buttons">
         <button
@@ -156,9 +201,10 @@ import { useLocation, useHistory } from "react-router-dom";
         </button>
 
         <button
-          onClick={breakTask}
-          className="timer-blue-button ui orange button"
+          onClick={toggleStopTask}
+          className={isRunning?"timer-blue-button ui red button":"timer-blue-button ui yellow button"}
         >
+          {isRunning}
           <ArrowForwardIcon />
         </button>
 
@@ -179,7 +225,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-setChosenTask 
+setChosenTask, alterTask
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(TaskTimer);
