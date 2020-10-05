@@ -8,18 +8,18 @@ const initialState = {
       title: "first task",
       category: "",
       isRunning: false,
-      date: "11 Sep 2020",
+      date: "05 Oct 2020",
       isTimeLimited: false,
     },
     {
       id: 101,
       initialDuration: 15000,
-      durationLeft: 1500,
+      durationLeft: 15000,
       completed: false,
       title: "second task",
       category: "",
       isRunning: false,
-      date: "11 Sep 2020",
+      date: "05 Oct 2020",
       isTimeLimited: true,
     },
     {
@@ -30,7 +30,7 @@ const initialState = {
       title: "third task",
       category: "",
       isRunning: false,
-      date: "11 Sep 2020",
+      date: "05 Oct 2020",
       isTimeLimited: false,
     },
     {
@@ -41,21 +41,20 @@ const initialState = {
       title: "fourth task",
       category: "",
       isRunning: false,
-      date: "11 Sep 2020",
+      date: "05 Oct 2020",
       isTimeLimited: true,
     },
   ],
 
   chosenTask: {
-    id: 1,
+    id: 101,
     initialDuration: 15000,
     durationLeft: 15000,
-    date: 123,
-    isDone: false,
-    name: "second task",
+    completed: false,
+    title: "second task",
     category: "",
     isRunning: false,
-    date: "31 Aug 2020",
+    date: "05 Oct 2020",
     isTimeLimited: true,
   }
 };
@@ -89,10 +88,22 @@ const todos = (state = initialState, action) => {
         allTasks: state.allTasks.filter((todo) => todo.id !== action.id),
       };
 
+    case "ALTER_TASK":
+      return {
+        ...state,
+        allTasks: function() {
+          let index = state.allTasks.map(t=>t.id).indexOf(action.task.id)
+          if(index<0) return state.allTasks
+          let tasks = state.allTasks;
+          tasks[index] = action.task;
+          return tasks; 
+        }
+      }
+
     case "SET_CHOSEN_TASK":
       return {
         ...state,
-        chosenTask: state.chosenTask,
+        chosenTask: action.chosenTask,
       };
 
     default:
