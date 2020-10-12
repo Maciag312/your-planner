@@ -1,17 +1,31 @@
 import React from "react";
 import { connect } from "react-redux";
 import "./Home.css";
+import Button from "@material-ui/core/Button";
+import {useHistory} from 'react-router-dom';
+
 
 export const Home = (props) => {
-  console.log(props)
+  let history = useHistory();
   return (
-    <div className="home">
-      <div className="home-box container">
-        <h1 className="home__text">What is your todays goal ?</h1>
-        <input className="home__input" />
-        <br/>
-        <button className="home-button ui blue button">Begin adding your tasks</button>
-         <div>{props.authentication.toString()}</div>
+    <div className="home_center">
+      <div className="home">
+        <div className="home_text">Plan your day with Your Planner</div>
+        <Button
+          variant="contained"
+          style={{
+            backgroundColor: "#6E96FE",
+            width: "150px",
+            alignSelf: "center",
+            fontWeight: "600",
+            fontSize: "15px",
+            boxShadow: "none"
+          }}
+          onClick={()=>history.push("/planner")}
+        >
+          <span style={{ color: "white" }}>Get started</span>
+          
+        </Button>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState} from "react";
 import { connect } from "react-redux";
 import { addTask } from "../../Store/actions";
 import Dropdown from "../reusableComponents/Dropdown";
@@ -53,7 +53,7 @@ export const AddToDo = (props) => {
     console.log("event: ", event.target);
 
     if (ref.current.contains(event.target) && text !== "") {
-      event.preventDefault();
+     event.preventDefault()
       add();
       setText(""); //request TODO
       setShowTime("");
