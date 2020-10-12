@@ -1,0 +1,17 @@
+.footer_logo{
+    max-width: 200px;
+    object-fit: contain;
+}
+
+.footer_box{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

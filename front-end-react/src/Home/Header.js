@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./Header.css";
-import logo_dark from "./pngs/logo_dark.png";
 import logo_white from "./pngs/logo_white.png";
 import { Link } from "react-router-dom";
 
@@ -10,72 +9,52 @@ export const Header = (props) => {
 
   useEffect(() => {
     window.onscroll = () => {
-      
-      if (window.scrollY > 40) {
+      if (window.scrollY > 100) {
         handleShow(true);
       } else handleShow(false);
     };
   }, []);
 
-  
-
   return (
-    <nav className={`header ${show && "header__dark"}`}>
+    <div className="header_center">
+      
+    <nav className={`header ${show && "header_dark"}`}>
       {/* logo  -->left*/}
       <Link to="/">
-        <img
-          className={"header__logo"}
-          src={show ? logo_white : logo_dark}
-          alt=""
-        />
+        <img className={"header__logo"} src={logo_white} alt="" />
       </Link>
 
       {/* Header blank box*/}
 
-      {/* 1st Link Sign in  --> right*/}
-
       <div className="header__navBox">
         
+        {/* 1st Link  login */}
         <div className="header__nav">
           <Link
             className={`header__link ${show && "header__white__link"}`}
             to="/login"
           >
             <div className="header__option">
-              <span className="header__optionLineOne"> Hello Kamil </span>
-              <span className="header__optionLineTwo"> Sign out</span>
+              <span className="header__optionLineTwo"> Log in</span>
+            </div>
+          </Link>
+        </div>
+        {/* 2nd Link  Registration  --> right*/}
+        <div className="header__nav">
+          <Link
+            className={`header__link ${show && "header__white__link"}`}
+            to="/registration"
+          >
+            <div className="header__option">
+              <span className="header__optionLineTwo"> Registration</span>
             </div>
           </Link>
         </div>
 
-        {/* 2nd Link Your tasks  --> right*/}
-        <div className="header__nav">
-          <Link
-            className={`header__link ${show && "header__white__link"}`}
-            to="/planner"
-          >
-            <div className="header__option">
-              <span className="header__optionLineOne"> Kamil's </span>
-              <span className="header__optionLineTwo"> Tasks</span>
-            </div>
-          </Link>
-        </div>
-
-        {/* 3rd Link  Statistics  --> right*/}
-        <div className="header__nav">
-          <Link
-            className={`header__link ${show && "header__white__link"}`}
-            to="/statistics"
-          >
-            <div className="header__option">
-              <span className="header__optionLineOne"> Kamil's </span>
-              <span className="header__optionLineTwo"> Statistics</span>
-            </div>
-          </Link>
-        </div>
       </div>
     </nav>
+    </div>
   );
-}
+};
 
 export default Header;
