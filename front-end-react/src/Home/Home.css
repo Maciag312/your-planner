@@ -20,6 +20,7 @@
   align-items: center;
   width: 100%;
 }
+
 .home_text {
   transition-timing-function: ease-in;
   transition: all 0.4s;

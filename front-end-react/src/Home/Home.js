@@ -3,27 +3,40 @@ import { connect } from "react-redux";
 import "./Home.css";
 import Button from "@material-ui/core/Button";
 import {useHistory} from 'react-router-dom';
-
+import { makeStyles } from '@material-ui/core/styles';
 
 export const Home = (props) => {
   let history = useHistory();
+
+  const getStartedButton = makeStyles({
+    root:{
+      backgroundColor: "#6E96FE",
+      width: "150px",
+      alignSelf: "center",
+      fontWeight: "600",
+      fontSize: "17px",
+      boxShadow: "none",
+      color: "white",
+      textTransform: 'none',
+      '&:hover':{
+        backgroundColor: '#87A8FF',
+        boxShadow: "none",
+      },
+    }
+  });
+  const classes = getStartedButton();
+
   return (
     <div className="home_center">
       <div className="home">
         <div className="home_text">Plan your day with Your Planner</div>
         <Button
+        disableFocusRipple="true"
+        className={classes.root}
           variant="contained"
-          style={{
-            backgroundColor: "#6E96FE",
-            width: "150px",
-            alignSelf: "center",
-            fontWeight: "600",
-            fontSize: "15px",
-            boxShadow: "none"
-          }}
           onClick={()=>history.push("/planner")}
         >
-          <span style={{ color: "white" }}>Get started</span>
+          Get started
           
         </Button>
       </div>

@@ -1,4 +1,4 @@
-import React, { seState} from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Task from "./Task";
@@ -25,7 +25,6 @@ const TasksList = (props) => {
 
   const returnedList = props.tasks.map((task) => (
     <Task task={task}></Task>
-
   ));
 
   if (returnedList.length === 0) {

@@ -1,24 +1,31 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import "./NavigationBar.css"
-import { Link } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
-
-
+import Button from '@material-ui/core/Button';
+import {useHistory} from 'react-router-dom'
+import {makeStyles} from '@material-ui/core/styles'
 
 export const NavigationBar = (props) => {
-    let location = useLocation();
+   
       
+const history = useHistory();
 
+const navLook = makeStyles({
+    root:{
+        height: '100%'
+        
+    }
+});
+
+const classes = navLook();
     const logout = () =>{
     }
     return (
         <div className="menu">
             <div className="menuinner">
-               
-                <Link className="link-item" style={location.pathname==="/planner"? {fontWeight: "bolder"}:{fontWeight: "normal"}} disabled={location==="/planner"} to="/planner">TASKS</Link>
-                <Link className="link-item"  style={location.pathname==="/statistics"? {fontWeight: "bolder"}:{fontWeight: "normal"}}  disabled={location.pathname==="/statistics"} to="/statistics">STATISTICS</Link>
-                <button className="link-item"  onClick={logout}>LOG OUT</button>
+                <Button disableRipple="true" className={classes.root} onClick={()=>{history.push("/planner")}}>Tasks</Button>
+                <Button disableRipple="true" className={classes.root} onClick={()=>{history.push("/statistics")}} >Statistics</Button>
+                <Button disableRipple="true" className={classes.root}  onClick={logout}>Log out</Button>
             </div>
         </div>
     )

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import Checkbox from "@material-ui/core/Checkbox";
+import DeleteIcon from '@material-ui/icons/Delete';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import IconButton from '@material-ui/core/IconButton';
+import PauseIcon from '@material-ui/icons/Pause';
 import { toggleTodo } from "../../Store/actions";
 import { removeTask } from "../../Store/actions";
 import { useHistory } from "react-router-dom";
@@ -13,12 +17,13 @@ const Task = (props) => {
   const [play, setPlay] = useState(false);
   const [timeLeft, setTimeLeft] = useState(props.todos.chosenTask.durationLeft);
 
+  
   const styleBox = {
     background: '#84A6FE',
     borderRadius: 6,
     border: 0,
     color: 'white',
-    height: 26,
+    height: '20px',
     padding: '0 20px',
     alignSelf: 'center'
   };
@@ -42,19 +47,18 @@ const Task = (props) => {
 
   const playPause = () => {
     return play ? (
-      <button
-        className="ui  icon button"
-        onClick={() => handlePauseClick(props.task)}
-      >
-        <i className={`pause icon`}></i>
-      </button>
+      <IconButton  edge="start" style={{}}onClick={() => handlePauseClick(props.task)}>
+        <PauseIcon fontSize="large"  style={{fill: "#215BF3"}}/>
+      </IconButton>
+      
     ) : (
-      <button
-        className="ui icon button"
+      <IconButton
+      edge="start"
+      disableRipple = 'true'
         onClick={() => handlePlayClick(props.task)}
-      >
-        <i className={`play icon`}></i>
-      </button>
+     >
+       <PlayArrowIcon  fontSize="large"  style={{fill: "#215BF3"}}/>
+     </IconButton>
     );
   };
  
@@ -88,9 +92,9 @@ const Task = (props) => {
       key={props.task.id}
       completed={props.task.completed.toString()}
       className="item"
-      style={{ display: "flex", justifyContent: "space-between" }}
+      style={{ height: '50px',display: "flex", alignItems:'center'}}
     >
-      <div className="left floated content">
+      <div style={{}}>
         {props.task.isTimeLimited ? (
           playPause()
         ) : (
@@ -99,6 +103,7 @@ const Task = (props) => {
             color="primary"
             inputProps={{ "aria-label": "secondary checkbox" }}
             checked={props.task.completed}
+            style ={{marginRight: '4px'}}
           />
         )}
       </div>
@@ -107,6 +112,7 @@ const Task = (props) => {
         className="content"
         style={{
           display: "flex",
+          height: '30px',
           alignSelf: "center",
           width: "75%",
           justifyContent: "center",
@@ -124,15 +130,13 @@ const Task = (props) => {
       ) : (
         <div></div>
       )}
-      <div className="right floated content">
-        <button
-          className="ui negative button"
-          onClick={() => props.removeTask(props.task.id)}
-        >
-          Remove
-        </button>
-      </div>
-    </div>
+      <div style={{display: 'flex',justifyContent:'flex-end', width: '25%'}}>
+        <IconButton disableRipple="true" >
+        <DeleteIcon onClick={() => props.removeTask(props.task.id)} />
+        </IconButton>
+        </div>
+        </div>
+    
   );
 };
 

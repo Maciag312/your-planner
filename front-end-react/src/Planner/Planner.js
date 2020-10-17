@@ -14,7 +14,6 @@ const Planner = (props) => {
   return (
     <div>
       <NavigationBar />
-
       <DateBar />
       <br />
       <ProgressBar
