@@ -8,8 +8,8 @@ import "./TaskTimer.css";
 import { connect } from "react-redux";
 import {setChosenTask} from "../Store/actions"
 import {alterTask} from "../Store/actions"
-import { useLocation, useHistory } from "react-router-dom";
 
+import { useLocation, useHistory } from "react-router-dom";
 
 
 //TODO 1. break task toggle to start/stop and save time to chosen task and task 
@@ -46,12 +46,8 @@ const [timeLeft,setTimeLeft] = React.useState(formatTime(props.chosenTask.durati
 const [isRunning, setRunning ] = React.useState(false);
 const [indexIntervalTaskTime, setIndexIntervalTaskTime] = React.useState(0);
 
-
-
-
 const saveTaskTime = (chosenTas) => {
-  // props.alterTask(Object.assign(chosenTas));
-  props.setChosenTask(Object.assign(chosenTas));
+  alterTask(Object.assign(chosenTas))
 }
 
 
@@ -108,6 +104,7 @@ const getFollowingTask = (currentTask) => {
   }
 
   const onTaskChange = () => {
+    clearInterval(indexIntervalTaskTime)
     let chT = props.chosenTask;
     chT.isRunning = true;
     setRunning(true)
