@@ -3,6 +3,7 @@ import "./ProgressBar.css";
 
 function ProgressBar(props) {
   const taskBarWidth = 290;
+  console.log(props);
   let isThereAnyTasks = props.numberOfTasks===0?false:true;
   return (
     <div>

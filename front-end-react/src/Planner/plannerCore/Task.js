@@ -19,7 +19,7 @@ const Task = (props) => {
 
   
   const styleBox = {
-    background: '#84A6FE',
+    background: '#008BFF',
     borderRadius: 6,
     border: 0,
     color: 'white',
@@ -49,7 +49,7 @@ const Task = (props) => {
   const playPause = () => {
     return play ? (
       <IconButton  edge="start" style={{}}onClick={() => handlePauseClick(props.task)}>
-        <PauseIcon fontSize="large"  style={{fill: "#215BF3"}}/>
+        <PauseIcon fontSize="large"  style={{fill: "#008BFF"}}/>
       </IconButton>
       
     ) : (
@@ -58,7 +58,7 @@ const Task = (props) => {
       disableRipple = 'true'
         onClick={() => handlePlayClick(props.task)}
      >
-       <PlayArrowIcon  fontSize="large"  style={{fill: "#215BF3"}}/>
+       <PlayArrowIcon  fontSize="large"  style={{fill: "#008BFF"}}/>
      </IconButton>
     );
   };
@@ -122,8 +122,7 @@ console.log(props)
         <div>{props.task.title}</div>
       </div>
       
-      <div style={{display: 'flex',justifyContent:'flex-end', width: '25%'}}>
-       
+      <div style={{display: 'flex', justifyContent:'flex-end', width: '100%'}}>
         {props.task.isRunning ? (
         <Box style={styleBox}>
           <div style={{display: 'flex',height: '100%',alignItems: 'center'}}>

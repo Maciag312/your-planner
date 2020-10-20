@@ -2,30 +2,35 @@ import React from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Task from "./Task";
+import { List} from 'antd';
 
 
 const TasksList = (props) => {
   let history = useHistory();
 
-
+console.log(props);
   const showSelectedTasks = () => {
     switch (props.visibility) {
       case "SHOW_ALL":
         return returnedList;
       case "SHOW_COMPLETED":
-        return returnedList.filter((t) => t.props.task.completed.toString() === "true");
+        return returnedList.filter((t) => t.props.children.props.children.props.task.completed.toString()=== "true");//
 
       case "SHOW_ACTIVE":
-        return returnedList.filter((t) => t.props.task.completed.toString() === "false");
+        return returnedList.filter((t) => t.props.children.props.children.props.task.completed.toString()=== "false");
 
       default:
         return "Error: Unknown filter";
     }
   };
-
-  console.log(props.todos.allTasks)
-  const returnedList = props.todos.allTasks.map((task) => (
-   <Task task={task}></Task>
+  // tasks => przefiltrowane po dacie taski (przekazywane )
+  const returnedList = props.tasks.map((task) => (
+  <List.Item >
+    <div style={{width: '100%'}}>
+      <Task task={task}></Task>
+    </div>
+   
+   </List.Item>
   ));
 
   if (returnedList.length === 0) {
@@ -38,7 +43,7 @@ const TasksList = (props) => {
     );
   }
   return (
-    <div className="ui middle aligned divided list" >{showSelectedTasks()}</div>
+    <List style={{width: '50%'}}>{showSelectedTasks()}</List>
   );
 };
 
