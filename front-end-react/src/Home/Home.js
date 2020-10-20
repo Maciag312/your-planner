@@ -29,7 +29,8 @@ export const Home = (props) => {
   return (
     <div className="home_center">
       <div className="home">
-        <div className="home_text">Plan your day with Your Planner</div>
+        <div className="home_text_small">Introducing Your Planner</div>
+        <div className="home_text">Plan your day and track the time</div>
         <Button
         disableFocusRipple="true"
         className={classes.root}

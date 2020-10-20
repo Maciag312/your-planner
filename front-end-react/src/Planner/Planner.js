@@ -9,15 +9,16 @@ import Menu from './plannerCore/Menu';
 const Planner = (props) => {
   
   const getFilterdByDateTasks = () => {
-    return props.tasks.filter(t=>t.date===props.day)
+    return (props.tasks.filter((t) => t.date === props.day));
   }
+  
   return (
     <div>
       <NavigationBar />
       <DateBar />
       <br />
       <ProgressBar
-        numberOfDone={getFilterdByDateTasks().filter((t) => t.isDone === true).length}
+        numberOfDone={getFilterdByDateTasks().filter((t) =>t.completed === true).length} //nie działa jeszcze dla time limited
         numberOfTasks={getFilterdByDateTasks().length}
       />
       <br/>
@@ -25,10 +26,9 @@ const Planner = (props) => {
       <AddToDo />
       <br />
       <Menu />
-      <div className="ui container">
-        <div className="ui segment">
-          <TasksList tasks={getFilterdByDateTasks()} />
-        </div>
+      <div style={{ display: 'flex',width:'100%',justifyContent: 'center'}}>
+          <TasksList style={{width: '50%'}} tasks={getFilterdByDateTasks()} />
+       
       </div>
 
     </div>

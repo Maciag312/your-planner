@@ -20,13 +20,24 @@
   align-items: center;
   width: 100%;
 }
+.home_text_small{
+ margin-top: 150px;
+color: white;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-weight: 200;
+font-size: 25px;
+animation-name: smallTextAnimation;
+animation-duration: 2s;  
+animation-fill-mode: forwards;
+
+
+}
 
 .home_text {
   transition-timing-function: ease-in;
   transition: all 0.4s;
   display: flex;
-  margin-top: 250px;
-  margin-bottom: 100px;
+ margin-bottom: 40px;
   justify-content: center;
   align-self: center;
   font-size: 50px;
@@ -37,8 +48,8 @@
   color: white;
   
   position: relative;
-  animation-name: myAnimation;
-  animation-duration: 1s;  
+  animation-name: bigTextAnimation;
+  animation-duration: 1.5s;  
   animation-fill-mode: forwards;
 
 }
@@ -51,12 +62,23 @@
 }
 
 
-@keyframes myAnimation {
+@keyframes bigTextAnimation {
   from{
-    opacity: 0%;
-    top: 50px
+    opacity:70%;
+    bottom: 9px
   }
   to{
     opacity: 100%; 
-    top: 0px}
+    bottom: 0px}
+}
+
+@keyframes smallTextAnimation {
+  from{
+    opacity:0%;
+    letter-spacing: 10px;
+    
+  }
+  to{
+    opacity:100%;
+    letter-spacing: 3px;}
 }
