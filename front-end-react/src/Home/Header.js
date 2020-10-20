@@ -13,20 +13,36 @@ export const Header = (props) => {
   let history= useHistory()
 
   const  buttonLook = makeStyles({
-    root: {
-      color: 'white',
-      backgroundColor: 'transparent',
+    buttonSignUp: {
+      backgroundColor: 'white',
+      color: '#0087FF',
       height: '30px',
      textTransform: 'none',
      '&:hover':{
       backgroundColor: 'white',
       color: '#0087FF',
+      boxShadow: "0px 0px 50px",
+      transition: "0.3s color",
+      
+    },
+    
+  }})
+
+  const buttonLook2 = makeStyles({
+    buttonLogIn: {
+      backgroundColor: 'transparent',
+      color: 'white',
+      height: '30px',
+     textTransform: 'none',
+     '&:hover':{
+      color: '#1E58FF',
+      boxShadow: "none",
     },
     },
   })
  
   const classes = buttonLook();
-
+  const classes2 = buttonLook2();
   useEffect(() => {
     window.onscroll = () => {
       if (window.scrollY > 100) {
@@ -36,9 +52,10 @@ export const Header = (props) => {
   }, []);
 
   return (
-    <div className="header_center">
+    
+    <div className="header_center" >
       
-    <nav className={`header ${show && "header_dark"}`}>
+    <div className={`header ${show && 'header_scroll'} `}>
       {/* logo  -->left*/}
       <Link to="/">
         <img className={"header__logo"} src={logo_white} alt="" />
@@ -51,11 +68,13 @@ export const Header = (props) => {
         {/* 1st Link  login */}
         <div className="header__nav">
           <Button
-            className={classes.root}
+          variant="text"
+          disableRipple="true"
+            className={classes2.buttonLogIn}
             onClick={()=>{history.push("/login")}}
           >
             <div className="header__option">
-              <span className="header__optionLineTwo"> Log in</span>
+              Log in
             </div>
           
           </Button>
@@ -63,19 +82,22 @@ export const Header = (props) => {
         {/* 2nd Link  Registration  --> right*/}
         <div className="header__nav">
           <Button
-            className={classes.root}
+            className={classes.buttonSignUp}
             onClick={()=>{history.push("/registration")}}
           >
             <div className="header__option">
-              <span className="header__optionLineTwo"> Registration</span>
+               Sign up
             </div>
           </Button>
           
         </div>
 
       </div>
-    </nav>
+
     </div>
+   
+    </div>
+    
   );
 };
 

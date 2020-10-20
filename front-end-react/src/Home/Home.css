@@ -35,6 +35,12 @@
   font-weight: 900;
   z-index: 1;
   color: white;
+  
+  position: relative;
+  animation-name: myAnimation;
+  animation-duration: 1s;  
+  animation-fill-mode: forwards;
+
 }
 
 .home_image {
@@ -42,4 +48,15 @@
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
   z-index: -1;
   margin-bottom: -150px
+}
+
+
+@keyframes myAnimation {
+  from{
+    opacity: 0%;
+    top: 50px
+  }
+  to{
+    opacity: 100%; 
+    top: 0px}
 }
