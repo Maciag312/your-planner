@@ -8,7 +8,7 @@ const initialState = {
       title: "first task",
       category: "",
       isRunning: false,
-      date: "17 Oct 2020",
+      date: "20 Oct 2020",
       isTimeLimited: false,
     },
     {
@@ -18,8 +18,8 @@ const initialState = {
       completed: false,
       title: "second task",
       category: "",
-      isRunning: false,
-      date: "17 Oct 2020",
+      isRunning: true,
+      date: "20 Oct 2020",
       isTimeLimited: true,
     },
     {
@@ -30,7 +30,7 @@ const initialState = {
       title: "third task",
       category: "",
       isRunning: false,
-      date: "17 Oct 2020",
+      date: "20 Oct 2020",
       isTimeLimited: false,
     },
     {
@@ -40,22 +40,22 @@ const initialState = {
       completed: false,
       title: "fourth task",
       category: "",
-      isRunning: false,
-      date: "17 Oct 2020",
+      isRunning: true,
+      date: "20 Oct 2020",
       isTimeLimited: true,
     },
   ],
 
   chosenTask: {
-    id: 101,
-    initialDuration: 15000,
-    durationLeft: 5000,
-    completed: false,
-    title: "second task",
-    category: "",
-    isRunning: false,
-    date: "17 Oct 2020",
-    isTimeLimited: true,
+    // id: 101,
+    // initialDuration: 15000,
+    // durationLeft: 5000,
+    // completed: false,
+    // title: "second task",
+    // category: "",
+    // isRunning: false,
+    // date: "20 Oct 2020",
+    // isTimeLimited: true,
   }
 };
 

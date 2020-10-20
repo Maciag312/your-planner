@@ -7,24 +7,25 @@ import Task from "./Task";
 const TasksList = (props) => {
   let history = useHistory();
 
+
   const showSelectedTasks = () => {
     switch (props.visibility) {
       case "SHOW_ALL":
         return returnedList;
       case "SHOW_COMPLETED":
-        return returnedList.filter((t) => t.props.completed === "true");
+        return returnedList.filter((t) => t.props.task.completed.toString() === "true");
 
       case "SHOW_ACTIVE":
-        return returnedList.filter((t) => t.props.completed === "false");
+        return returnedList.filter((t) => t.props.task.completed.toString() === "false");
 
       default:
         return "Error: Unknown filter";
     }
   };
 
-
-  const returnedList = props.tasks.map((task) => (
-    <Task task={task}></Task>
+  console.log(props.todos.allTasks)
+  const returnedList = props.todos.allTasks.map((task) => (
+   <Task task={task}></Task>
   ));
 
   if (returnedList.length === 0) {
@@ -37,14 +38,13 @@ const TasksList = (props) => {
     );
   }
   return (
-    <div className="ui middle aligned divided list">{showSelectedTasks()}</div>
+    <div className="ui middle aligned divided list" >{showSelectedTasks()}</div>
   );
 };
 
 const mapStateToProps = (state) => ({
   todos: state.todos,
   visibility: state.visibility,
-  
 });
 
 const mapDispatchToProps = {
