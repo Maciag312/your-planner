@@ -86,7 +86,7 @@ const Task = (props) => {
     }
     return result;
   };
-
+console.log(props)
   return (
     <div
       key={props.task.id}
@@ -125,7 +125,6 @@ const Task = (props) => {
           <div style={{marginTop:'4px'}}>
              {formatTime(timeLeft)}
           </div>
-         
         </Box>
       ) : (
         <div></div>
@@ -136,7 +135,6 @@ const Task = (props) => {
         </IconButton>
         </div>
         </div>
-    
   );
 };
 
