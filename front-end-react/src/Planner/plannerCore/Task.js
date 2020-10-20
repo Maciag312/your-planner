@@ -23,8 +23,9 @@ const Task = (props) => {
     borderRadius: 6,
     border: 0,
     color: 'white',
-    height: '20px',
+    height: '23px',
     padding: '0 20px',
+    marginRight: '30px',
     alignSelf: 'center'
   };
 
@@ -120,16 +121,19 @@ console.log(props)
       >
         <div>{props.task.title}</div>
       </div>
-      {props.task.isRunning ? (
+      
+      <div style={{display: 'flex',justifyContent:'flex-end', width: '25%'}}>
+       
+        {props.task.isRunning ? (
         <Box style={styleBox}>
-          <div style={{marginTop:'4px'}}>
+          <div style={{display: 'flex',height: '100%',alignItems: 'center'}}>
              {formatTime(timeLeft)}
           </div>
         </Box>
       ) : (
         <div></div>
       )}
-      <div style={{display: 'flex',justifyContent:'flex-end', width: '25%'}}>
+      
         <IconButton disableRipple="true" >
         <DeleteIcon onClick={() => props.removeTask(props.task.id)} />
         </IconButton>
