@@ -31,18 +31,15 @@ const Task = (props) => {
 
   useEffect(() => {
     setTimeLeft(props.todos.chosenTask.durationLeft);
-    console.log("wykonuje");
   }, [props.todos.chosenTask.durationLeft]);
 
   const handlePlayClick = () => {
-    console.log("onPlay", play);
     setPlay(!play);
     props.setChosenTask(props.task);
     history.push("/timer");
   };
 
   const handlePauseClick = () => {
-    console.log("onPause", play);
     setPlay(!play);
   };
 
@@ -87,7 +84,6 @@ const Task = (props) => {
     }
     return result;
   };
-console.log(props)
   return (
     <div
       key={props.task.id}

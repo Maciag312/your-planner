@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import {TextField} from '@material-ui/core'
 import {Button} from '@material-ui/core'
@@ -49,8 +49,6 @@ export const Registration = (props) => {
   const classes = useStyles();
   const classes2 = useStyles2();
 
-  const [isRepsoneOk, setResponseOk] = React.useState(false)
-  const [response, setReponse] = React.useState(null);
 
   const signup = (username, password) => {
 
@@ -65,9 +63,6 @@ export const Registration = (props) => {
 
 const [open, setOpen] = React.useState(false);
 
-  const handleClick = () => {
-    setOpen(true);
-  };
 
 const handleClose = (event, reason) => {
   if (reason === 'clickaway') {
