@@ -71,7 +71,7 @@ export const AddToDo = (props) => {
   };
 
   return (
-    <form ref={ref} className="add_container">
+    <div ref={ref} className="add_container">
       <form onSubmit={onFormSubmit} className="add_form ui form">
         <input
           className="ui input"
@@ -106,7 +106,7 @@ export const AddToDo = (props) => {
       >
         Add task
       </div>
-    </form>
+    </div>
   );
 };
 const mapStateToProps = (state) => ({

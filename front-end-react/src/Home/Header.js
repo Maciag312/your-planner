@@ -69,7 +69,7 @@ export const Header = (props) => {
         <div className="header__nav">
           <Button
           variant="text"
-          disableRipple="true"
+          disableRipple={true}
             className={classes2.buttonLogIn}
             onClick={()=>{history.push("/login")}}
           >

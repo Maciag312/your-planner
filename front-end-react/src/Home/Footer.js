@@ -9,8 +9,8 @@ const Footer =()=> {
             <hr style={{width: "70%"}}/>
             <div className="footer_box">
                 <img className="footer_logo" src={greyLogo} alt=""/>
-                <Button disableRipple="true" style={{height: '30px',color: "grey"}}>About us</Button>
-                <Button disableRipple="true" style={{height: '30px',color: "grey"}}>Contact</Button>
+                <Button disableRipple={true} style={{height: '30px',color: "grey"}}>About us</Button>
+                <Button disableRipple={true} style={{height: '30px',color: "grey"}}>Contact</Button>
 
             </div>
             
