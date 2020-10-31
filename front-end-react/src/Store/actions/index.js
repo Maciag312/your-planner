@@ -82,8 +82,28 @@ export const alterTask = (task) => {
   };
 };
 
+export const setAllTasksRunningFalse = () => {
+  return {
+    type: "SET_ALL_TASKS_RUNNING_FALSE",
+  }
+}
+export const setTaskRunning = (task) => {
+  return {
+    type: "SET_TASK_RUNNING",
+    task
+  }
+}
+
+export const setTaskTime = (task) => {
+  return {
+    type: "SET_TASK_TIME",
+    task
+  }
+}
+
 export const VisibilityFilters = {
   SHOW_ALL: "SHOW_ALL",
   SHOW_COMPLETED: "SHOW_COMPLETED",
   SHOW_ACTIVE: "SHOW_ACTIVE",
 };
+
