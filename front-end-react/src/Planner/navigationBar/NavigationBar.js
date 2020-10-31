@@ -27,9 +27,9 @@ const classes = navLook();
     
             <div className="menuinner">
                    <img className ="logo_small"src ={logo512_YP} alt=""/>
-                <Button style ={{textTransform: 'none', fontSize: '15px', fontWeight: '200'}} disableRipple="true" className={classes.root} onClick={()=>{history.push("/planner")}}>Tasks</Button>
-                <Button style ={{textTransform: 'none', fontSize: '15px', fontWeight: '200'}} disableRipple="true" className={classes.root} onClick={()=>{history.push("/statistics")}} >Statistics</Button>
-                <Button style ={{textTransform: 'none', fontSize: '15px', fontWeight: '200'}} disableRipple="true" className={classes.root}  onClick={logout}>Log out</Button>
+                <Button style ={{textTransform: 'none', fontSize: '15px', fontWeight: '200'}} disableRipple={true} className={classes.root} onClick={()=>{history.push("/planner")}}>Tasks</Button>
+                <Button style ={{textTransform: 'none', fontSize: '15px', fontWeight: '200'}} disableRipple={true} className={classes.root} onClick={()=>{history.push("/statistics")}} >Statistics</Button>
+                <Button style ={{textTransform: 'none', fontSize: '15px', fontWeight: '200'}} disableRipple={true} className={classes.root}  onClick={logout}>Log out</Button>
             </div>
         </div>
     )

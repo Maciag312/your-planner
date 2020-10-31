@@ -65,8 +65,8 @@ console.log(props);
   };
   // tasks => przefiltrowane po dacie taski (przekazywane )
   
-  const returnedList = showSelectedTasks(props.tasks).map((task) => (
-  <List.Item >
+  const returnedList = showSelectedTasks(props.tasks).map((task,index) => (
+  <List.Item key={index}>
     <div style={{width: '100%'}}>
       <Task task={task}></Task>
     </div>

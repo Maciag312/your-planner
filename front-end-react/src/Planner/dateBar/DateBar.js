@@ -32,14 +32,14 @@ export const DateBar = (props) => {
     return (
         <div style={{ justifyContent: "center", display: "flex" }}>
             <div className="date-wrapper">
-                <IconButton disableRipple="true" onClick={goPreviousDay}>
+                <IconButton disableRipple={true} onClick={goPreviousDay}>
                     <ChevronLeftIcon fontSize="large"/>
                 </IconButton>
                
                 <div className="date-text">
                 {props.day}
                 </div>
-                <IconButton   disableRipple="true" onClick={goNextDay}>
+                <IconButton   disableRipple={true} onClick={goNextDay}>
                     <ChevronRightIcon fontSize="large"/>
                 </IconButton>
                

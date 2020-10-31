@@ -12,7 +12,7 @@ const Content = () => {
                 <img className ="content_picture" src={mac_iphone} alt=""/>
                 <span className="content_text">Your Planner is a tool that in easy and very convenient way, helps managing your daily goals. Wherever you are, at work, at home ,at school or in public transport, Your Planner is tracking time to accomplish your activities. </span>
                 <br/>
-                <Button disableRipple="true" style={{color: '#0087FF',}}>Find out more</Button>
+                <Button disableRipple={true} style={{color: '#0087FF',}}>Find out more</Button>
             </div>
             
     )

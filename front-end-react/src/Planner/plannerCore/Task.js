@@ -55,7 +55,7 @@ const Task = (props) => {
     ) : (
       <IconButton
       edge="start"
-      disableRipple = 'true'
+      disableRipple = {true}
         onClick={() => handlePlayClick(props.task)}
      >
        <PlayArrowIcon  fontSize="large"  style={{fill: "#008BFF"}}/>
@@ -134,8 +134,8 @@ console.log(props)
         <div></div>
       )}
       
-        <IconButton disableRipple="true" >
-        <DeleteIcon onClick={() => props.removeTask(props.task.id)} />
+        <IconButton onClick={() => props.removeTask(props.task.id)} disableRipple={true}>
+          <DeleteIcon/>
         </IconButton>
         </div>
         </div>
