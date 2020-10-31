@@ -54,7 +54,7 @@ const initialState = {
     title: "second task",
     category: "",
     isRunning: false,
-    date: "2 Oct 2020",
+    date: "31 Oct 2020",
     isTimeLimited: true,
   }
 };

@@ -109,6 +109,7 @@ const getFollowingTask = (currentTask) => {
     props.setTaskRunning(props.chosenTask)
     clearInterval(indexIntervalTaskTime)
     let chT = props.chosenTask;
+    setTimeLeft(formatTime(chT.durationLeft));
     chT.isRunning = true;
     setRunning(true)
     saveTask(chT);
