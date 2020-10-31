@@ -30,24 +30,24 @@ const Menu = (props) => {
   };
   return (
     <div className="ui secondary pointing menu">
-      <a
+      <div 
         onClick={() => activeAllChange()}
         className={` item ${activeAll ? "active" : ""}`}
       >
         All Tasks
-      </a>
-      <a
+      </div>
+      <div
         onClick={() => activeCompleteChange()}
         className={` item ${activeComplete ? "active" : ""} `}
       >
         Completed
-      </a>
-      <a
+      </div>
+      <div
         onClick={() => activeActiveChange()}
         className={` item ${activeActive ? "active" : ""} `}
       >
         Active
-      </a>
+      </div>
     </div>
   );
 };
