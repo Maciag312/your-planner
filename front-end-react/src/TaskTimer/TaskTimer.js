@@ -6,8 +6,7 @@ import ReplayIcon from "@material-ui/icons/Replay";
 import { IconButton } from "@material-ui/core";
 import "./TaskTimer.css";
 import { connect } from "react-redux";
-import {setChosenTask} from "../Store/actions"
-import {alterTask} from "../Store/actions"
+import {setChosenTask, setAllTasksRunningFalse, alterTask, setTaskRunning, setTaskTime} from "../Store/actions"
 
 import { useLocation, useHistory } from "react-router-dom";
 
@@ -46,7 +45,7 @@ const [timeLeft,setTimeLeft] = React.useState(formatTime(props.chosenTask.durati
 const [isRunning, setRunning ] = React.useState(false);
 const [indexIntervalTaskTime, setIndexIntervalTaskTime] = React.useState(0);
 
-const saveTaskTime = (chosenTas) => {
+const saveTask = (chosenTas) => {
   alterTask(Object.assign(chosenTas))
 }
 
@@ -94,7 +93,8 @@ const getFollowingTask = (currentTask) => {
     let time = formatTime(chT.durationLeft)
     document.title = time;
     setTimeLeft(time);
-    saveTaskTime(chT);
+    saveTask(chT);
+    props.setTaskTime(chT)
     if(chT.durationLeft<=0)
       return false //when chosen task is finished itreturns false to clear interval 
     return true
@@ -106,11 +106,15 @@ const getFollowingTask = (currentTask) => {
   }
 
   const onTaskChange = () => {
+    console.log("all task on false")
+    props.setAllTasksRunningFalse()
+    props.setTaskRunning(props.chosenTask)
     clearInterval(indexIntervalTaskTime)
     let chT = props.chosenTask;
+    setTimeLeft(formatTime(chT.durationLeft));
     chT.isRunning = true;
     setRunning(true)
-    saveTaskTime(chT);
+    saveTask(chT);
     console.log("on task change");
     intervalTaskTimer()
     
@@ -121,7 +125,7 @@ const getFollowingTask = (currentTask) => {
     chT.durationLeft = 0;
     chT.completed = true;
     setTimeLeft(formatTime(chT.durationLeft));
-    saveTaskTime(chT);
+    saveTask(chT);
   }
 
   const isTaskViewPresent=()=>{
@@ -138,7 +142,7 @@ const getFollowingTask = (currentTask) => {
       let chT = props.chosenTask;
       chT.isRunning = false;
       setRunning(false)
-      saveTaskTime(chT);
+      saveTask(chT);
       clearIntervalTimer();
       document.title = "stopped"
 
@@ -146,7 +150,7 @@ const getFollowingTask = (currentTask) => {
       let chT = props.chosenTask;
       chT.isRunning = true;
       setRunning(true)
-      saveTaskTime(chT);
+      saveTask(chT);
       intervalTaskTimer();
     }
    }
@@ -160,7 +164,7 @@ const getFollowingTask = (currentTask) => {
     chT.completed = false;
     console.log(chT)
     setTimeLeft(formatTime(chT.durationLeft));
-    saveTaskTime(chT);
+    saveTask(chT);
     intervalTaskTimer()
    }   
 
@@ -223,7 +227,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-setChosenTask, alterTask
+setChosenTask, alterTask, setAllTasksRunningFalse, setTaskRunning, setTaskTime
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(TaskTimer);

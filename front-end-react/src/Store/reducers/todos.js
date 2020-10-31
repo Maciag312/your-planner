@@ -19,7 +19,9 @@ const initialState = {
       title: "second task",
       category: "",
       isRunning: true,
+
       date: "30 Oct 2020",
+
       isTimeLimited: true,
     },
     {
@@ -54,7 +56,7 @@ const initialState = {
     title: "second task",
     category: "",
     isRunning: false,
-    date: "20 Oct 2020",
+    date: "31 Oct 2020",
     isTimeLimited: true,
   }
 };
@@ -99,6 +101,25 @@ const todos = (state = initialState, action) => {
           tasks[index] = action.task;
           return tasks; 
         }
+      }
+
+    case "SET_TASK_TIME":
+      return {
+        ...state,
+        allTasks: state.allTasks.map(t=>t.id===action.task.id?{...t, durationLeft: action.task.durationLeft, completed: action.task.completed}: t)
+      }
+    
+    case "SET_ALL_TASKS_RUNNING_FALSE":
+      return{
+        ...state,
+        allTasks: state.allTasks.map((todo)=> 
+        todo.isTimeLimited ? {...todo, isRunning: false} : todo
+        )
+      }
+    case "SET_TASK_RUNNING":
+      return {
+        ...state,
+        allTasks: state.allTasks.map(t=>t.id===action.task.id? {...t, isRunning: true}: t)
       }
 
     case "SET_CHOSEN_TASK":
