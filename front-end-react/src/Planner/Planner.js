@@ -12,6 +12,7 @@ const Planner = (props) => {
     return (props.tasks.filter((t) => t.date === props.day));
   }
   
+  
   return (
     <div>
       <NavigationBar />
@@ -27,7 +28,8 @@ const Planner = (props) => {
       <br />
       <Menu />
       <div style={{ display: 'flex',width:'100%',justifyContent: 'center'}}>
-          <TasksList style={{width: '50%'}} tasks={getFilterdByDateTasks()} />
+
+          <TasksList style={{width: '50%'}} tasks={getFilterdByDateTasks()}/>
        
       </div>
 

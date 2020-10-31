@@ -123,6 +123,7 @@ console.log(props)
       </div>
       
       <div style={{display: 'flex', justifyContent:'flex-end', width: '100%'}}>
+        
         {props.task.isRunning ? (
         <Box style={styleBox}>
           <div style={{display: 'flex',height: '100%',alignItems: 'center'}}>

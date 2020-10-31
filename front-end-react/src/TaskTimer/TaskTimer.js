@@ -76,6 +76,8 @@ const getFollowingTask = (currentTask) => {
       setIndexIntervalTaskTime(index);
     }
   }
+  
+  console.log(props); 
 
   const updateTaskTimeEverySecond = () => {
     let chT = props.chosenTask;
