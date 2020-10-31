@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import './DateBar.css'
 
 export const DateBar = (props) => {
-    console.log(props.day)
+
 
     useEffect(() => {
         const d = new Date()
@@ -19,10 +19,9 @@ export const DateBar = (props) => {
         props.setDay(`${da} ${mo} ${ye}`)
 
         return () => {
-            
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    console.log(props);
     const goNextDay=()=>{
         props.nextDay()
     }
