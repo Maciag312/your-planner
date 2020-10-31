@@ -27,7 +27,7 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 font-weight: 200;
 font-size: 25px;
 animation-name: smallTextAnimation;
-animation-duration: 2s;  
+animation-duration: 3s;  
 animation-fill-mode: forwards;
 
 
@@ -46,10 +46,9 @@ animation-fill-mode: forwards;
   font-weight: 900;
   z-index: 1;
   color: white;
-  
   position: relative;
   animation-name: bigTextAnimation;
-  animation-duration: 1.5s;  
+  animation-duration: 2s;  
   animation-fill-mode: forwards;
 
 }
@@ -57,7 +56,7 @@ animation-fill-mode: forwards;
 .home_image {
   width: 100%;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-  z-index: -1;
+  z-index: -1.5;
   margin-bottom: -150px
 }
 
@@ -65,18 +64,17 @@ animation-fill-mode: forwards;
 @keyframes bigTextAnimation {
   from{
     opacity:70%;
-    bottom: 9px
+    bottom: 0px
   }
   to{
     opacity: 100%; 
-    bottom: 0px}
+    bottom: -15px}
 }
 
 @keyframes smallTextAnimation {
   from{
     opacity:0%;
     letter-spacing: 10px;
-    
   }
   to{
     opacity:100%;
