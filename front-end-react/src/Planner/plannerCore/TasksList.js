@@ -1,15 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
 import Task from "./Task";
 import { List} from 'antd';
 import noTasksImage from '../../Home/pngs/noTasksImage.jpeg'
 import noTasksInFilterFound from '../../Home/pngs/noTasksInFilterFound.jpeg'
 
 const TasksList = (props) => {
-  let history = useHistory();
 
-console.log(props);
 
   const showSelectedTasks = (tasks) => {
     switch (props.visibility) {
@@ -43,7 +40,7 @@ console.log(props);
           <img src={noTasksInFilterFound} alt=""/>
             </div>
           <div style={{letterSpacing: '1px', fontSize: '15px', fontWeight: ' 300'}}>
-          Any tasks found in this filter
+          No tasks found in this filter
         </div>
         </div>
         )

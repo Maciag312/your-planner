@@ -53,7 +53,6 @@ const saveTask = (chosenTas) => {
 const getFollowingTask = (currentTask) => {
   let taskIndex = props.tasks.map(t=>t.id).indexOf(currentTask.id)
   if(taskIndex>=props.tasks.length){
-    console.log("no task")
     return undefined
    }else{
       return props.tasks[taskIndex+1]
@@ -68,15 +67,12 @@ const getFollowingTask = (currentTask) => {
 
   const intervalTaskTimer = () => {
     if(props.chosenTask.isRunning){
-      console.log("intervalTaskTimer")
       var index = setInterval(() => {
        if(!updateTaskTimeEverySecond()){clearInterval(index)};
       }, 1000);
       setIndexIntervalTaskTime(index);
     }
   }
-  
-  console.log(props); 
 
   const updateTaskTimeEverySecond = () => {
     let chT = props.chosenTask;
@@ -89,7 +85,6 @@ const getFollowingTask = (currentTask) => {
       chT.completed = true;
       chT.durationLeft = 0;
     }
-    console.log(chT);
     let time = formatTime(chT.durationLeft)
     document.title = time;
     setTimeLeft(time);
@@ -101,12 +96,10 @@ const getFollowingTask = (currentTask) => {
   }
   
   const clearIntervalTimer = () => {
-    console.log("clear interval " + indexIntervalTaskTime )
     clearInterval(indexIntervalTaskTime);
   }
 
   const onTaskChange = () => {
-    console.log("all task on false")
     props.setAllTasksRunningFalse()
     props.setTaskRunning(props.chosenTask)
     clearInterval(indexIntervalTaskTime)
@@ -115,12 +108,10 @@ const getFollowingTask = (currentTask) => {
     chT.isRunning = true;
     setRunning(true)
     saveTask(chT);
-    console.log("on task change");
     intervalTaskTimer()
     
   }
   const completeTask = () => {
-    console.log("complete task");
     let chT = props.chosenTask;
     chT.durationLeft = 0;
     chT.completed = true;
@@ -137,7 +128,6 @@ const getFollowingTask = (currentTask) => {
      his.push("/planner");
    }
    const toggleStopTask = () => {
-    console.log("toggle stop task");
     if(props.chosenTask.isRunning){
       let chT = props.chosenTask;
       chT.isRunning = false;
@@ -156,13 +146,11 @@ const getFollowingTask = (currentTask) => {
    }
    const repeatTask = () => {
     clearIntervalTimer()
-    console.log("repeat task");
     let chT = props.chosenTask;
     chT.durationLeft = chT.initialDuration;
     chT.isRunning = true;
     setRunning(true)
-    chT.completed = false;
-    console.log(chT)
+    chT.completed = false; 
     setTimeLeft(formatTime(chT.durationLeft));
     saveTask(chT);
     intervalTaskTimer()
@@ -171,6 +159,7 @@ const getFollowingTask = (currentTask) => {
 
    useEffect(() => {
     onTaskChange()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.chosenTask.id])
 
   

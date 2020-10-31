@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
@@ -60,10 +60,6 @@ export const Login = (props) => {
   };
 
   const [open, setOpen] = React.useState(false);
-
-  const handleClick = () => {
-    setOpen(true);
-  };
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
