@@ -168,8 +168,8 @@ const getFollowingTask = (currentTask) => {
     {isTaskViewPresent()?
     <div className="timer">
       
-      <IconButton className="timer__back__button">
-        <ArrowBackIosIcon onClick={goToPlanner} className="timer__back__icon" />
+      <IconButton className="timer__back__button" onClick={goToPlanner}>
+        <ArrowBackIosIcon  className="timer__back__icon" />
       </IconButton>
 
       <div className="timer__task"> Task: {props.chosenTask.title}</div>
