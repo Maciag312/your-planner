@@ -1,5 +1,5 @@
 .content {
-  height: 90vh;
+  height: 140vh;
   display: flex;
   width: 100%;
   align-items: center;
@@ -38,7 +38,7 @@
 
 @media screen and (max-width: 800px){
   .content{
-    height: 110vh;
+    height: 130vh;
   }
   .content_title{
     font-size: 50px;
@@ -52,9 +52,13 @@
   }
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 500px){
   .content{
-    height: 100vh;
+    height: 160vh;
+  }
+  .content_title{
+    width: 80%;
+    font-size: 50px;
   }
 }
 
