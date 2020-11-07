@@ -3,13 +3,12 @@
   display: flex;
   width: 100%;
   align-items: center;
-  flex-wrap: wrap;
   flex-direction: column;
+
 }
 
 .content_title {
   padding-bottom: 50px;
-  flex-wrap: wrap;
   display: flex;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -23,7 +22,7 @@
 
 .content_picture {
   justify-content: center;
-  width: 65%;
+  width: 50%;
   padding-bottom: 40px;
 }
 
@@ -35,5 +34,44 @@
 
 .contnet_text_button{
     color: '0047FF';
+}
 
+@media screen and (max-width: 800px){
+  .content{
+    height: 130vh;
+  }
+  .content_title{
+    font-size: 50px;
+    width: 70%;
+  }
+  .content_text{
+    width: 80%;
+  }
+  .content_picture{
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .content{
+    height: 160vh;
+  }
+  .content_title{
+    width: 80%;
+    font-size: 50px;
+  }
+}
+
+/* iphone 6,7,8 PLUS horizontally */
+@media screen and (max-height: 500px){
+  .content{
+    height: 90vh;
+  }
+}
+
+/* iphone 6,7,8 horizontally */
+@media screen and (max-height: 350px){
+  .content{
+    height: 380vh;
+  }
 }

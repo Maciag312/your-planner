@@ -10,7 +10,7 @@ export const Home = (props) => {
 
   const getStartedButton = makeStyles({
     root:{
-      backgroundColor: "#6E96FE",
+      backgroundColor: "#10D39B",
       width: "150px",
       alignSelf: "center",
       fontWeight: "600",
@@ -19,7 +19,7 @@ export const Home = (props) => {
       color: "white",
       textTransform: 'none',
       '&:hover':{
-        backgroundColor: '#87A8FF',
+        backgroundColor: '#10D39B',
         boxShadow: "none",
       },
     }
@@ -30,9 +30,10 @@ export const Home = (props) => {
     <div className="home_center">
       <div className="home">
         <div className="home_text_small">Introducing Your Planner</div>
+        <div className="home_text_mobile">Organize day with Your Planner</div>
         <div className="home_text">Plan your day and track the time</div>
         <Button
-        disableFocusRipple="true"
+        disableFocusRipple={true}
         className={classes.root}
           variant="contained"
           onClick={()=>history.push("/planner")}

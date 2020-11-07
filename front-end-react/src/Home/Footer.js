@@ -6,7 +6,7 @@ import "./Footer.css"
 const Footer =()=> {
     return (
         <div className="footer">
-            <hr style={{width: "70%"}}/>
+            <br/>
             <div className="footer_box">
                 <img className="footer_logo" src={greyLogo} alt=""/>
                 <Button disableRipple={true} style={{height: '30px',color: "grey"}}>About us</Button>
